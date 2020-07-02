@@ -1,9 +1,13 @@
-<header>
-  <ul>
-    <li><a href="">ホーム</a></li>
-    <li><a href="">スタッフ管理</a></li>
-    <li><a href="">商品管理</a></li>
-    <li><a href="">注文情報ダウンロード</a></li>
-    <li><a href="/richeese-Admin/login/staff_logout.php">ログアウト</a></li>
-  </ul>
+<header class="header">
+  <div class="gnavi">
+    <div class="gnavi__inner">
+      <ul class="gnavi__list">
+        <li class="gnavi__item"><a class="gnavi__link" href="/richeese-Admin/"><span>ホーム</span></a></li>
+        <li class="gnavi__item"><a class="gnavi__link" href="/richeese-Admin/staff/staff_list.php"><span>スタッフ管理</span></a></li>
+        <li class="gnavi__item"><a class="gnavi__link" href="/richeese-Admin/product/pro_list.php"><span>商品管理</span></a></li>
+        <li class="gnavi__item"><a class="gnavi__link" href="/richeese-Admin/order/order_download.php"><span>注文情報<br>ダウンロード</span></a></li>
+        <li class="gnavi__item"><a class="gnavi__link" href="/richeese-Admin/login/staff_logout.php"><span>ログアウト</span></a></li>
+      </ul>
+    </div>
+  </div>
 </header>
