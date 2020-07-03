@@ -1,5 +1,7 @@
 <?php
 
+define('TITLE', 'ログインエラー');
+
 try {
   require_once __DIR__ . '/../functions/common.php';
 
@@ -25,8 +27,6 @@ try {
   $rec = $stmt->fetch(PDO::FETCH_ASSOC);
 
   if ($rec === false) {
-
-
     $error =  'スタッフコードかパスワードが間違っています';
   } else {
     session_start();
@@ -42,7 +42,6 @@ try {
   exit();
 }
 
-define('TITLE', 'ログインエラー');
 
 require_once ($_SERVER['DOCUMENT_ROOT'] . '/richeese-Admin/assets/_inc/head.php');
 ?>
