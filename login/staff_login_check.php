@@ -45,8 +45,8 @@ try {
 
 require_once ($_SERVER['DOCUMENT_ROOT'] . '/richeese-Admin/assets/_inc/head.php');
 ?>
-<h1>ログインエラー</h1>
+<h1 class="level1-heading">ログインエラー</h1>
 <p><?= $error; ?></p>
-  <a href="/richeese-Admin/login/staff_login.php">ログイン画面へ</a>
+  <a class="btn btn--medium btn--orange btn--link_orange" href="/richeese-Admin/login/staff_login.php">ログイン画面へ</a>
 </body>
 </html>

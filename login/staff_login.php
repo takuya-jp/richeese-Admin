@@ -10,7 +10,7 @@ require_once ($_SERVER['DOCUMENT_ROOT'] . '/richeese-Admin/assets/_inc/head.php'
     パスワード<br>
     <input type="password" name="pass"><br>
     <br>
-    <input type="submit" value="ログイン">
+    <input class="btn btn--large btn--orange btn--link-orange" type="submit" value="ログイン">
   </form>
 </body>
 </html>

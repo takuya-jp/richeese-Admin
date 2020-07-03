@@ -1,0 +1,65 @@
+.btn {
+  display: inline-block;
+  line-height: 1;
+  text-align: center;
+  text-decoration: none;
+
+  border-radius: 4px;
+  padding: 0.65em;
+  transition: .2s;
+
+  // 基本文字サイズ
+  font-size: 1.6rem;
+
+  &--small {
+    width: 80px;
+  }
+
+  &--medium {
+    width: 280px;
+  }
+
+  &--large {
+    width: 350px;
+  }
+
+  &--transparent {
+    color: #333;
+    background-color: transparent;
+    border: 1px solid #333;
+  }
+
+  &--orange {
+    color: #fff;
+    background-color: rgba(238, 152, 0, 1);
+    border: 1px solid transparent;
+  }
+  
+  &--green {
+    color: #fff;
+    background-color: rgba(68, 157, 68, 1);
+    border: 1px solid transparent;
+  }
+  
+  &--link_transparent:focus,
+  &--link_transparent:hover {
+  background-color: #eee;
+  color: currentColor;
+  border-color: #eee;
+}
+
+  &--link_orange:focus,
+  &--link_orange:hover {
+  background-color: rgba(238, 152, 0, 0.9);
+  color: #eee;
+  border-color: transparent;
+  }
+
+  &--link_green:focus,
+  &--link_green:hover {
+  background-color: rgba(68, 157, 68, 0.9);
+  color: #eee;
+  border-color: transparent;
+  }
+
+}
