@@ -1,8 +1,13 @@
 .login-name {
   font-size: 1.4rem;
-
-  margin-bottom: 30px;
 }
+
+  .login-name-box {
+    display: flex;
+    margin-bottom: 10px;
+    align-items: center;
+    justify-content: space-between;
+  }
 
 .result-message {
   font-size: 1.6rem;

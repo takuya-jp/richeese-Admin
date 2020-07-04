@@ -35,19 +35,20 @@ require_once ($_SERVER['DOCUMENT_ROOT'] . '/richeese-Admin/assets/_inc/header.ph
   <div class="section-container">
     <section class="staff-list">
       <h1 class="level1-heading">スタッフ一覧</h1>
-      <p class="login-name"><?= $staff_name; ?>さん ログイン中
+      <div class="login-name login-name-box">
+        <p><?= $staff_name; ?>さん ログイン中</p>
         <input class="btn btn--small btn--orange btn--link_orange" type="submit" name="add" value="新規登録">
-      </p>
+      </div>
       <form method="post" action="staff_branch.php">
-        <table>
-          <thead>
+        <table class="staff-table">
+          <thead class="staff-table__thead">
             <tr>
-              <th></th>
-              <th>コード</th>
-              <th>名前</th>
+              <th class="staff-table__thead-item1"></th>
+              <th class="staff-table__thead-item2">コード</th>
+              <th class="staff-table__thead-item3">名前</th>
             </tr>
           </thead>
-          <tbody>
+          <tbody class="staff-table__tbody">
             <?php
               while (true):
                 $rec = $stmt->fetch(PDO::FETCH_ASSOC);
@@ -56,13 +57,17 @@ require_once ($_SERVER['DOCUMENT_ROOT'] . '/richeese-Admin/assets/_inc/header.ph
               }
               ?>
             <tr>
-              <td><input id="<?= $rec['code']; ?>" type="radio" name="staffcode" value="<?= $rec['code']; ?>"></td>
-              <td><label for="<?= $rec['code']; ?>"><?= $rec['code']; ?></label></td>
-              <td><label for="<?= $rec['code']; ?>"><?= $rec['name']; ?></label></td>
+              <td class="staff-table__tbody-item1"><input id="<?= $rec['code']; ?>" type="radio" name="staffcode" value="<?= $rec['code']; ?>"></td>
+              <td class="staff-table__tbody-item2"><label class="hoge" for="<?= $rec['code']; ?>"><?= $rec['code']; ?></label></td>
+              <td class="staff-table__tbody-item3"><label class="hoge" for="<?= $rec['code']; ?>"><?= $rec['name']; ?></label></td>
             </tr>
             <?php endwhile; ?>
           </tbody>
         </table>
+        <div class="pagenation">
+          <a><i class="fas fa-angle-double-left"></i></a>
+          <a><i class="fas fa-angle-double-right"></i></a>
+        </div>
           <p>選択されたスタッフを</p>
           <input class="btn btn--exsmall btn--transparent btn--link_transparent" type="submit" name="disp" value="参照">
           <input class="btn btn--exsmall btn--transparent btn--link_transparent" type="submit" name="edit" value="修正">

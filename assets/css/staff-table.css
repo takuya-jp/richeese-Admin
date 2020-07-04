@@ -1,0 +1,39 @@
+.staff-table {
+  font-size: 1.6rem;
+  border-collapse: collapse;
+  width: 100%;
+  text-align: center; }
+  .staff-table__thead {
+    background-color: #eceeef;
+    height: 40px; }
+  .staff-table__thead-item1, .staff-table__thead-item2, .staff-table__thead-item3 {
+    font-weight: normal;
+    padding: 0.5em 0;
+    text-align: left; }
+  .staff-table__thead-item1 {
+    width: 15%; }
+  .staff-table__thead-item2 {
+    width: 20%; }
+  .staff-table__thead-item3 {
+    width: 65%; }
+  .staff-table__tbody {
+    font-size: 1.4rem; }
+    .staff-table__tbody > tr {
+      border-bottom: 1px solid #ddd; }
+  .staff-table__tbody-item1, .staff-table__tbody-item2, .staff-table__tbody-item3 {
+    padding: 0.5em 0;
+    position: relative; }
+    .staff-table__tbody-item1 label, .staff-table__tbody-item2 label, .staff-table__tbody-item3 label {
+      display: block;
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: left; }
+  .staff-table__tbody-item2 {
+    text-align: left; }
+  .staff-table__tbody-item3 {
+    text-align: left; }

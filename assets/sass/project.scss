@@ -4,13 +4,17 @@
 カード2カラム
 
 ---------------------------------------------------------------------*/
-
-.cards {
-  display: flex;
-  flex-wrap: wrap;
-  &--col2 > .cards__item{
-    width: calc((100% - 16px) / 2);
-    margin: 0 4px 10px 4px;
+.menu {
+  .login-name {
+    margin-bottom: 20px;
+  }
+  .cards {
+    display: flex;
+    flex-wrap: wrap;
+    &--col2 > .cards__item{
+      width: calc((100% - 16px) / 2);
+      margin: 0 4px 10px 4px;
+    }
   }
 }
 
@@ -64,3 +68,17 @@ result section
   }
 }
 
+/*---------------------------------------------------------------------
+
+staff-list section
+
+---------------------------------------------------------------------*/
+
+.staff-list {
+  table {
+    margin-bottom: 20px;
+  }
+  .pagenation {
+    margin-bottom: 32px;
+  }
+}
