@@ -3,14 +3,29 @@ define('TITLE', 'ログイン画面');
 
 require_once ($_SERVER['DOCUMENT_ROOT'] . '/richeese-Admin/assets/_inc/head.php');
 ?>
-  <h1>ロゴ</h1>
-  <form method="post" action="staff_login_check.php">
-    スタッフコード<br>
-    <input type="text" name="code"><br>
-    パスワード<br>
-    <input type="password" name="pass"><br>
-    <br>
-    <input class="btn btn--large btn--orange btn--link-orange" type="submit" value="ログイン">
-  </form>
+<main class="main">
+  <div class="section-container">
+    <section class="login">
+      <h1><img src="../assets/img/logo@2x.png" alt="画像：リッチーズ画像"></h1>
+      <form class="login-form" method="post" action="staff_login_check.php">
+
+        <div class="text-box">
+          <label class="text-box__label" for="code">スタッフコード</label>
+          <input id="code" class="text-box textbox__input" type="text" name="code">
+        </div>
+
+        <div class="text-box">
+          <label  class="text-box__label" for="pass">パスワード</label>
+          <input id="pass" class="text-box textbox__input" type="password" name="pass">
+        </div>
+
+        <div class="submit">
+          <input class="btn btn--large btn--orange btn--link_orange" type="submit" value="ログイン">
+        </div>
+      </form>
+    </section>
+  </div>
+</main>
+
 </body>
 </html>

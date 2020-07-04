@@ -1,0 +1,15 @@
+.text-box {
+  width: 280px;
+  height: 50px;
+  position: relative;
+  z-index: 800; }
+  .text-box__label {
+    position: absolute;
+    z-index: 801;
+    top: -8px;
+    left: 16px;
+    padding: 0 1em;
+    background-color: #fff; }
+  .text-box__input {
+    border: 1px solid #ddd;
+    border-radius: 5px; }

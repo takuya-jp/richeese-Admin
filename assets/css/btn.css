@@ -10,9 +10,9 @@
   .btn--small {
     width: 80px; }
   .btn--medium {
-    width: 280px; }
+    width: 240px; }
   .btn--large {
-    width: 350px; }
+    width: 280px; }
   .btn--transparent {
     color: #333;
     background-color: transparent;
@@ -30,10 +30,10 @@
     color: currentColor;
     border-color: #eee; }
   .btn--link_orange:focus, .btn--link_orange:hover {
-    background-color: rgba(238, 152, 0, 0.9);
+    background-color: rgba(238, 152, 0, 0.8);
     color: #eee;
     border-color: transparent; }
   .btn--link_green:focus, .btn--link_green:hover {
-    background-color: rgba(68, 157, 68, 0.9);
+    background-color: rgba(68, 157, 68, 0.8);
     color: #eee;
     border-color: transparent; }
