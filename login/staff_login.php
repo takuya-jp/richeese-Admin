@@ -11,12 +11,12 @@ require_once ($_SERVER['DOCUMENT_ROOT'] . '/richeese-Admin/assets/_inc/head.php'
 
         <div class="text-box">
           <label class="text-box__label" for="code">スタッフコード</label>
-          <input id="code" class="text-box textbox__input" type="text" name="code">
+          <input id="code" class="text-box__input" type="text" name="code">
         </div>
 
         <div class="text-box">
           <label  class="text-box__label" for="pass">パスワード</label>
-          <input id="pass" class="text-box textbox__input" type="password" name="pass">
+          <input id="pass" class="text-box__input" type="password" name="pass">
         </div>
 
         <div class="submit">

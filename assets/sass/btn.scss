@@ -11,8 +11,12 @@
   // 基本文字サイズ
   font-size: 1.6rem;
 
-  &--small {
+  &--exsmall {
     width: 80px;
+  }
+
+  &--small {
+    width: 140px;
   }
 
   &--medium {
@@ -40,6 +44,12 @@
     background-color: rgba(68, 157, 68, 1);
     border: 1px solid transparent;
   }
+
+  &--red {
+    color: #fff;
+    background-color: rgb(203, 46, 37);
+    border: 1px solid transparent;
+  }
   
   &--link_transparent:focus,
   &--link_transparent:hover {
@@ -58,6 +68,13 @@
   &--link_green:focus,
   &--link_green:hover {
   background-color: rgba(68, 157, 68, 0.8);
+  color: #eee;
+  border-color: transparent;
+  }
+
+  &--link_red:focus,
+  &--link_red:hover {
+  background-color: rgba(203, 46, 37, 0.8);
   color: #eee;
   border-color: transparent;
   }

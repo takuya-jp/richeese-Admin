@@ -3,29 +3,18 @@ header('X-FRAME-OPTIONS:DENY');
 
 session_start();
 session_regenerate_id(true);
+
+define('TITLE', 'スタッフ管理メニュートップ');
+
 if (isset($_SESSION['login']) === false) {
-  print 'ログインされていません。<br>';
-  print '<a href="../staff_login/staff_login.html">ログイン画面へ</a>';
+  header('Location: /richeese-Admin/login/staff_login.php');
   exit();
 } else {
-  print $_SESSION['staff_name'];
-  print 'さんログイン中<br>';
-  print '<br>';
-
+  $staff_name = $_SESSION['staff_name'];
 }
-?>
 
-<!DOCTYPE html>
-<html lang="ja">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>RICHEESE -スタッフ一覧-</title>
-</head>
-<body>
-<?php
 try {
-  require_once __DIR__ . '/../../functions/dbcon.php';
+  require_once __DIR__ . '/../functions/dbcon.php';
 
   $sql = 'SELECT code,name FROM mst_staff WHERE 1';
   $stmt = $dbh->prepare($sql);
@@ -34,31 +23,55 @@ try {
 
   $dbh = null;
 
-  print 'スタッフ一覧<br><br>';
-
-  print '<form method="post" action="staff_branch.php">';
-
-  while (true) {
-    $rec = $stmt->fetch(PDO::FETCH_ASSOC);
-    if ($rec === false) {
-      break;
-    }
-    print '<input type="radio" name="staffcode" value="'.$rec['code'].'">';
-    print $rec['name'];
-    print '<br>';
-  }
-
-  print '<input type="submit" name="disp" value="参照">';
-  print '<input type="submit" name="add" value="追加">';
-  print '<input type="submit" name="edit" value="修正">';
-  print '<input type="submit" name="delete" value="削除">';
-  print '</form>';
 } catch(PDOException $e) {
   print 'ただいま障害により大変ご迷惑をお掛けしております。';
   exit();
 }
+
+require_once ($_SERVER['DOCUMENT_ROOT'] . '/richeese-Admin/assets/_inc/head.php');
+require_once ($_SERVER['DOCUMENT_ROOT'] . '/richeese-Admin/assets/_inc/header.php');
 ?>
-<br>
-<a href="../staff_login/staff_top.php">トップメニューへ</a>
+<main class="main">
+  <div class="section-container">
+    <section class="staff-list">
+      <h1 class="level1-heading">スタッフ一覧</h1>
+      <p class="login-name"><?= $staff_name; ?>さん ログイン中
+        <input class="btn btn--small btn--orange btn--link_orange" type="submit" name="add" value="新規登録">
+      </p>
+      <form method="post" action="staff_branch.php">
+        <table>
+          <thead>
+            <tr>
+              <th></th>
+              <th>コード</th>
+              <th>名前</th>
+            </tr>
+          </thead>
+          <tbody>
+            <?php
+              while (true):
+                $rec = $stmt->fetch(PDO::FETCH_ASSOC);
+                if ($rec === false) {
+                break;
+              }
+              ?>
+            <tr>
+              <td><input id="<?= $rec['code']; ?>" type="radio" name="staffcode" value="<?= $rec['code']; ?>"></td>
+              <td><label for="<?= $rec['code']; ?>"><?= $rec['code']; ?></label></td>
+              <td><label for="<?= $rec['code']; ?>"><?= $rec['name']; ?></label></td>
+            </tr>
+            <?php endwhile; ?>
+          </tbody>
+        </table>
+          <p>選択されたスタッフを</p>
+          <input class="btn btn--exsmall btn--transparent btn--link_transparent" type="submit" name="disp" value="参照">
+          <input class="btn btn--exsmall btn--transparent btn--link_transparent" type="submit" name="edit" value="修正">
+          <input class="btn btn--exsmall btn--red btn--link_red" type="submit" name="delete" value="削除">
+      </form>
+    </section>
+  </div>
+</main>
+
+
 </body>
 </html>
