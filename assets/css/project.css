@@ -1,0 +1,29 @@
+@charset "UTF-8";
+/*---------------------------------------------------------------------
+
+カード2カラム
+
+---------------------------------------------------------------------*/
+.cards {
+  display: flex;
+  flex-wrap: wrap; }
+  .cards--col2 > .cards__item {
+    width: calc((100% - 16px) / 2);
+    margin: 0 4px 10px 4px; }
+
+/*---------------------------------------------------------------------
+
+result section
+
+---------------------------------------------------------------------*/
+.result {
+  text-align: center; }
+  .result .level1-heading {
+    margin-top: 70px;
+    margin-bottom: 110px; }
+  .result .result-icon {
+    margin-bottom: 10px; }
+  .result .result-message {
+    margin-bottom: 80px; }
+  .result .result-btn {
+    text-align: center; }

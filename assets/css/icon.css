@@ -1,0 +1,6 @@
+.result-icon {
+  font-size: 5rem; }
+  .result-icon--primary {
+    color: #449d44; }
+  .result-icon--error {
+    color: #cb2e25; }

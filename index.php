@@ -14,8 +14,9 @@ if (isset($_SESSION['login']) === false) {
 require_once ($_SERVER['DOCUMENT_ROOT'] . '/richeese-Admin/assets/_inc/head.php');
 require_once ($_SERVER['DOCUMENT_ROOT'] . '/richeese-Admin/assets/_inc/header.php');
 ?>
-  <main class="main">
-    <div class="main__inner">
+<main class="main">
+  <div class="section-container">
+    <section class="menu">
       <h1 class="level1-heading">管理メニュー</h1>
       <p class="login-name"><?= $staff_name; ?>さん ログイン中</p>
       <ul class="cards cards--col2">
@@ -72,7 +73,8 @@ require_once ($_SERVER['DOCUMENT_ROOT'] . '/richeese-Admin/assets/_inc/header.ph
           </a>
         </li>
       </ul>
-    </div>
-  </main>
+    </section>
+  </div>
+</main>
 </body>
 </html>

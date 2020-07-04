@@ -1,0 +1,39 @@
+
+/*---------------------------------------------------------------------
+
+カード2カラム
+
+---------------------------------------------------------------------*/
+
+.cards {
+  display: flex;
+  flex-wrap: wrap;
+  &--col2 > .cards__item{
+    width: calc((100% - 16px) / 2);
+    margin: 0 4px 10px 4px;
+  }
+}
+
+
+/*---------------------------------------------------------------------
+
+result section
+
+---------------------------------------------------------------------*/
+
+.result {
+  text-align: center;
+  .level1-heading {
+    margin-top: 70px;
+    margin-bottom: 110px;
+  }
+  .result-icon {
+    margin-bottom: 10px;
+  }
+  .result-message {
+    margin-bottom: 80px;
+  }
+  .result-btn {
+    text-align: center;
+  }
+}

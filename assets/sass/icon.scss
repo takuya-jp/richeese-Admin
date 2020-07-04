@@ -1,0 +1,10 @@
+.result-icon {
+  font-size: 5rem;
+  &--primary {
+    color: rgba(68, 157, 68, 1);
+  }
+  &--error {
+    color: rgb(203, 46, 37);
+  }
+}
+
