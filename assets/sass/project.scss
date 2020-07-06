@@ -181,3 +181,28 @@ staff-edit-check section
     }
   }
 }
+
+/*---------------------------------------------------------------------
+
+staff-add section
+
+---------------------------------------------------------------------*/
+
+.staff-add {
+  .staff-add-form {
+    max-width: 600px;
+    margin: 40px auto 0;
+    .text-box {
+      margin-bottom: 30px;
+      width: auto;
+    }
+  }
+  .page-transition-btns {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    .btn {
+      margin-bottom: 16px;
+    }
+  }
+}

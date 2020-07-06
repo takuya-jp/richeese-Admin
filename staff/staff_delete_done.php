@@ -15,7 +15,7 @@ try {
   $staff_code = $_POST['code'];
   $csrf = $_POST['csrf'];
   if ($csrf !== $_SESSION['csrfToken']) {
-    header('Location: /richeese-Admin/login/staff_login.php');
+    header('Location: /richeese-Admin/staff/staff_list.php');
     exit();
   }
 
