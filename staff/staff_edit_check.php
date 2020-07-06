@@ -65,8 +65,8 @@ if($staff_name === '' || $staff_pass === '' || $staff_pass !== $staff_pass2): ?>
       <input type="hidden" name="name" value="<?= $staff_name; ?>">
       <input type="hidden" name="pass" value="<?= $staff_pass; ?>">
       <input class="btn btn--medium btn--green btn--link_green" type="submit" value="スタッフ情報を修正する">
-      <input class="btn btn--small btn--transparent
-    </div> btn--link_transparent" type="button" onclick="history.back()" value="戻る">
+      <input class="btn btn--small btn--transparent btn--link_transparent" type="button" onclick="history.back()" value="戻る">
+    </div>
   </form>
 <?php endif; ?>
 

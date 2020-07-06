@@ -127,6 +127,10 @@ staff-edit-check section
   margin-top: 40px;
   text-align: center; }
 
+.staff-edit-check .alert-message {
+  text-align: center;
+  padding: 1em; }
+
 .staff-edit-check .page-transition-btns {
   display: flex;
   flex-direction: column;
