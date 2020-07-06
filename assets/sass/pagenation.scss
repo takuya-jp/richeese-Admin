@@ -18,5 +18,8 @@
       opacity: .8;
       background-color: #ddd;
     }
+    &--disable {
+      opacity: 0;
+    }
   }
 }

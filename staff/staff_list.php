@@ -16,10 +16,26 @@ if (isset($_SESSION['login']) === false) {
 try {
   require_once __DIR__ . '/../functions/dbcon.php';
 
-  $sql = 'SELECT code,name FROM mst_staff WHERE 1';
-  $stmt = $dbh->prepare($sql);
+  if (isset($_REQUEST['page'])) {
+    $page = $_REQUEST['page'];
+  } else {
+    $page = 1;
+  }
 
+  $page = max($page, 1);
+
+  $counts = $dbh->query('SELECT COUNT(*) AS cnt FROM mst_staff');
+  $cnt = $counts->fetch();
+  $maxpage = ceil($cnt['cnt'] / 5);
+  $page = min($page, $maxpage);
+
+  $start = ($page - 1) * 5;
+
+  $sql = 'SELECT code,name FROM mst_staff WHERE 1 ORDER BY code ASC LIMIT ?,5';
+  $stmt = $dbh->prepare($sql);
+  $stmt->bindParam(1, $start, PDO::PARAM_INT);
   $stmt->execute();
+
 
   $dbh = null;
 
@@ -34,12 +50,12 @@ require_once ($_SERVER['DOCUMENT_ROOT'] . '/richeese-Admin/assets/_inc/header.ph
 <main class="main">
   <div class="section-container">
     <section class="staff-list">
-      <h1 class="level1-heading">スタッフ一覧</h1>
-      <div class="login-name login-name-box">
-        <p><?= $staff_name; ?>さん ログイン中</p>
-        <input class="btn btn--small btn--orange btn--link_orange" type="submit" name="add" value="新規登録">
-      </div>
       <form method="post" action="staff_branch.php">
+        <h1 class="level1-heading">スタッフ一覧</h1>
+        <div class="login-name login-name-box">
+          <p><?= $staff_name; ?>さん ログイン中</p>
+          <input class="btn btn--small btn--orange btn--link_orange" type="submit" name="add" value="新規登録">
+        </div>
         <table class="staff-table">
           <thead class="staff-table__thead">
             <tr>
@@ -65,8 +81,18 @@ require_once ($_SERVER['DOCUMENT_ROOT'] . '/richeese-Admin/assets/_inc/header.ph
           </tbody>
         </table>
         <div class="pagenation">
-          <a href="#" class="pagenation__left pagenation__left--hover"><i class="fas fa-angle-double-left"></i></a>
-          <a href="#" class="pagenation__right"><i class="fas fa-angle-double-right"></i></a>
+        <?php if($page > 1): ?>
+          <a href="staff_list.php?page=<?= $page-1; ?>" class="pagenation__left"><i class="fas fa-angle-double-left"></i></a>
+        <?php else: ?>
+          <a href="staff_list.php?page=<?= $page-1; ?>" class="pagenation__left--disable"></a>
+        <?php endif; ?>
+
+        <?php if($page < $maxpage): ?>
+          <a href="staff_list.php?page=<?= $page+1; ?>" class="pagenation__right"><i class="fas fa-angle-double-right"></i></a>
+        <?php else: ?>
+          <a href="staff_list.php?page=<?= $page-1; ?>" class="pagenation__right--disable"></a>
+        <?php endif; ?>
+
         </div>
           <div class="select-buttons">
             <p class="select-buttons__text">選択されたスタッフを</p>

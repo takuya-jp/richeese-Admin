@@ -16,3 +16,5 @@
     .pagenation__left:hover, .pagenation__right:hover {
       opacity: .8;
       background-color: #ddd; }
+    .pagenation__left--disable, .pagenation__right--disable {
+      opacity: 0; }
