@@ -1,5 +1,10 @@
 .login-name {
   font-size: 1.4rem;
+
+  &__border_bottom {
+    border-bottom: 1px solid #ddd;
+    padding: 0 0 .5em;
+  }
 }
 
   .login-name-box {

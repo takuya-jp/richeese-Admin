@@ -19,6 +19,7 @@ require_once ($_SERVER['DOCUMENT_ROOT'] . '/richeese-Admin/assets/_inc/header.ph
   <div class="section-container">
     <section class="result">
       <h1 class="level1-heading">スタッフ選択エラー</h1>
+      <p class="login-name login-name__border_bottom"><?= $staff_name; ?>さん ログイン中</p>
       <p class="result-icon result-icon--error"><i class="fas fa-times"></i></p>
       <p class="result-message">スタッフが選択されていません</p>
       <div class="result-btn"><a class="btn btn--small btn--transparent btn--link_transparent" href="/richeese-Admin/staff/staff_list.php">戻る</a></div>

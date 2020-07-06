@@ -1,7 +1,6 @@
-@charset "UTF-8";
 /*---------------------------------------------------------------------
 
-カード2カラム
+home
 
 ---------------------------------------------------------------------*/
 .menu .login-name {
@@ -40,9 +39,9 @@ result section
 ---------------------------------------------------------------------*/
 .result {
   text-align: center; }
-  .result .level1-heading {
-    margin-top: 70px;
-    margin-bottom: 110px; }
+  .result .login-name {
+    text-align: left;
+    margin-bottom: 60px; }
   .result .result-icon {
     margin-bottom: 10px; }
   .result .result-message {
@@ -60,3 +59,17 @@ staff-list section
 
 .staff-list .pagenation {
   margin-bottom: 32px; }
+
+/*---------------------------------------------------------------------
+
+staff-disp section
+
+---------------------------------------------------------------------*/
+.staff-disp .login-name {
+  margin-bottom: 20px; }
+
+.staff-disp .staff-data-list {
+  margin-bottom: 110px; }
+
+.staff-disp form {
+  text-align: center; }

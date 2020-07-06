@@ -1,7 +1,7 @@
 
 /*---------------------------------------------------------------------
 
-カード2カラム
+home
 
 ---------------------------------------------------------------------*/
 .menu {
@@ -53,9 +53,9 @@ result section
 
 .result {
   text-align: center;
-  .level1-heading {
-    margin-top: 70px;
-    margin-bottom: 110px;
+  .login-name {
+    text-align: left;
+    margin-bottom: 60px;
   }
   .result-icon {
     margin-bottom: 10px;
@@ -80,5 +80,23 @@ staff-list section
   }
   .pagenation {
     margin-bottom: 32px;
+  }
+}
+
+/*---------------------------------------------------------------------
+
+staff-disp section
+
+---------------------------------------------------------------------*/
+
+.staff-disp {
+  .login-name {
+    margin-bottom: 20px;
+  }
+  .staff-data-list {
+    margin-bottom: 110px;
+  }
+  form {
+    text-align: center;
   }
 }

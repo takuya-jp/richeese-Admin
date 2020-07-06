@@ -1,35 +1,22 @@
 <?php
-header('X-FRAME-OPTIONS:DENY');
-
 session_start();
 session_regenerate_id(true);
+
+define('TITLE', 'スタッフ情報参照');
+
 if (isset($_SESSION['login']) === false) {
-  print 'ログインされていません。<br>';
-  print '<a href="../staff_login/staff_login.html">ログイン画面へ</a>';
+  header('Location: /richeese-Admin/login/staff_login.php');
   exit();
 } else {
-  print $_SESSION['staff_name'];
-  print 'さんログイン中<br>';
-  print '<br>';
-
+  $staff_name = $_SESSION['staff_name'];
 }
-?>
 
-<!DOCTYPE html>
-<html lang="ja">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>RICHEESE -スタッフ情報参照-</title>
-</head>
-<body>
-<?php
 try {
-  require_once __DIR__ . '/../../functions/common.php';
+  require_once __DIR__ . '/../functions/common.php';
   $get = sanitize($_GET);
   $staff_code = $get['staffcode'];
   
-  require_once __DIR__ . '/../../functions/dbcon.php';
+  require_once __DIR__ . '/../functions/dbcon.php';
 
   $sql = 'SELECT name FROM mst_staff WHERE code = ?';
   $stmt = $dbh->prepare($sql);
@@ -44,18 +31,28 @@ try {
   print 'ただいま障害により大変ご迷惑をお掛けしております。';
   exit();
 }
+
+require_once ($_SERVER['DOCUMENT_ROOT'] . '/richeese-Admin/assets/_inc/head.php');
+require_once ($_SERVER['DOCUMENT_ROOT'] . '/richeese-Admin/assets/_inc/header.php');
+
 ?>
-スタッフ情報参照<br>
-<br>
-スタッフコード<br>
-<?php print $staff_code; ?>
-<br>
-スタッフ名<br>
-<?php print $staff_name; ?>
-<br>
-<br>
-<form>
-  <input type="button" onclick="history.back()" value="戻る">
-</form>
+
+<main class="main">
+  <div class="section-container">
+    <section class="staff-disp">
+      <h1 class="level1-heading">スタッフ情報参照</h1>
+      <p class="login-name login-name__border_bottom"><?= $staff_name; ?>さん ログイン中</p>
+      <dl class="staff-data-list">
+        <dt class="staff-data-list__title">スタッフコード</dt>
+        <dd class="staff-data-list__data"><?php print $staff_code; ?></dd>
+        <dt class="staff-data-list__title">スタッフ名</dt>
+        <dd class="staff-data-list__data"><?php print $staff_name; ?></dd>
+      </dl>
+      <form>
+        <input class="btn btn--small btn--transparent btn--link_transparent" type="button" onclick="history.back()" value="戻る">
+      </form>
+    </section>
+  </div>
+</main>
 </body>
 </html>
