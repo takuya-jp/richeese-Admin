@@ -12,3 +12,8 @@
 
 .result-message {
   font-size: 1.6rem; }
+
+.input-error-message {
+  text-align: center;
+  padding: 0.5em;
+  font-size: 1.6rem; }

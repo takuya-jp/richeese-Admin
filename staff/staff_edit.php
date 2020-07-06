@@ -46,11 +46,11 @@ require_once ($_SERVER['DOCUMENT_ROOT'] . '/richeese-Admin/assets/_inc/header.ph
     <section class="staff-edit">
       <h1 class="level1-heading">スタッフ情報修正</h1>
       <p class="login-name login-name__border_bottom"><?= $login_staff_name; ?>さん ログイン中</p>
-      <dl class="staff-data-list">
-        <dt class="staff-data-list__title">スタッフコード</dt>
-        <dd class="staff-data-list__data"><?php print $staff_code; ?></dd>
-      </dl>
-      <form method="post" action="staff_edit_check.php">
+      <form class="staff-edit-form" method="post" action="staff_edit_check.php">
+        <dl class="staff-data-list">
+          <dt class="staff-data-list__title">スタッフコード</dt>
+          <dd class="staff-data-list__data"><?php print $staff_code; ?></dd>
+        </dl>
 
         <div class="text-box">
           <label class="text-box__label" for="name">スタッフ名</label>

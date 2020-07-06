@@ -98,10 +98,12 @@ staff-disp section
 staff-edit section
 
 ---------------------------------------------------------------------*/
-.staff-edit .text-box {
-  margin-bottom: 30px;
-  width: auto;
-  max-width: 400px; }
+.staff-edit .staff-edit-form {
+  max-width: 600px;
+  margin: 0 auto; }
+  .staff-edit .staff-edit-form .text-box {
+    margin-bottom: 30px;
+    width: auto; }
 
 .staff-edit .page-transition-btns {
   display: flex;
@@ -115,3 +117,13 @@ staff-edit section
 staff-edit-check section
 
 ---------------------------------------------------------------------*/
+.staff-edit-check .page-transition-from-edit-check {
+  margin-top: 40px;
+  text-align: center; }
+
+.staff-edit-check .page-transition-btns {
+  display: flex;
+  flex-direction: column;
+  align-items: center; }
+  .staff-edit-check .page-transition-btns .btn {
+    margin-bottom: 16px; }

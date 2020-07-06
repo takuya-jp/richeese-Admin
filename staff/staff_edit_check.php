@@ -1,72 +1,77 @@
 <?php
-header('X-FRAME-OPTIONS:DENY');
-
 session_start();
 session_regenerate_id(true);
+
+define('TITLE', 'スタッフ情報修正-確認画面-');
+
 if (isset($_SESSION['login']) === false) {
-  print 'ログインされていません。<br>';
-  print '<a href="../staff_login/staff_login.html">ログイン画面へ</a>';
+  header('Location: /richeese-Admin/login/staff_login.php');
   exit();
 } else {
-  print $_SESSION['staff_name'];
-  print 'さんログイン中<br>';
-  print '<br>';
-
+  $login_staff_name = $_SESSION['staff_name'];
 }
-?>
 
-<!DOCTYPE html>
-<html lang="ja">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>RICHEESE -スタッフ修正確認-</title>
-</head>
-<body>
-<?php
-
-  require_once __DIR__ . '/../../functions/common.php';
+require_once __DIR__ . '/../functions/common.php';
 
 $post = sanitize($_POST);
-
 
 $staff_code = $post['code'];
 $staff_name = $post['name'];
 $staff_pass = $post['pass'];
 $staff_pass2 = $post['pass2'];
 
-
 if ($staff_name === '') {
-  print 'スタッフ名が入力されていません。<br>';
-} else {
-  print 'スタッフ名：';
-  print $staff_name;
-  print '<br>';
+  $error[] =  'スタッフ名が入力されていません。<br>';
 }
 
 if ($staff_pass === '') {
-  print 'パスワードが入力されていません。<br>';
+  $error[] = 'パスワードが入力されていません。<br>';
 }
 if ($staff_pass !== $staff_pass2) {
-  print 'パスワードが一致しません。<br>';
+  $error[] =  'パスワードが一致しません。<br>';
 }
 
-if($staff_name === '' || $staff_pass === '' || $staff_pass !== $staff_pass2) {
-  print '<form>';
-  print '<input type="button" onclick="history.back()" value="戻る">';
-  print '</form>';
-} else {
-  $staff_pass = md5($staff_pass);
-  print '<form method="post" action="staff_edit_done.php">';
-  print '<input type="hidden" name="code" value="'.$staff_code.'">';
-  print '<input type="hidden" name="name" value="'.$staff_name.'">';
-  print '<input type="hidden" name="pass" value="'.$staff_pass.'">';
-  print '<br>';
-  print '<input type="button" onclick="history.back()" value="戻る">';
-  print '<input type="submit" value="OK">';
-  print '</form>';
-}
+require_once ($_SERVER['DOCUMENT_ROOT'] . '/richeese-Admin/assets/_inc/head.php');
+require_once ($_SERVER['DOCUMENT_ROOT'] . '/richeese-Admin/assets/_inc/header.php');
 
 ?>
+
+<main class="main">
+  <div class="section-container">
+    <section class="staff-edit-check">
+      <h1 class="level1-heading">スタッフ情報修正</h1>
+      <p class="login-name login-name__border_bottom"><?= $login_staff_name; ?>さん ログイン中</p>
+<?php
+if($staff_name === '' || $staff_pass === '' || $staff_pass !== $staff_pass2): ?>
+  <?php for ($i = 0; $i < count($error); $i++): ?>
+    <p class="input-error-message"><?= $error[$i]; ?></p>
+  <?php endfor; ?>
+  <form>
+    <div class="page-transition-from-edit-check">
+      <input class="btn btn--small btn--transparent btn--link_transparent" type="button" onclick="history.back()" value="戻る">
+    </div>
+  </form>
+<?php else: ?>
+<?php $staff_pass = md5($staff_pass); ?>
+  <dl class="staff-data-list">
+    <dt class="staff-data-list__title">スタッフ名</dt>
+    <dd class="staff-data-list__data"><?php print $staff_name; ?></dd>
+    <dt class="staff-data-list__title">パスワード</dt>
+    <dd class="staff-data-list__data">＊＊＊＊＊＊＊＊＊＊＊</dd>
+  </dl>
+  <form method="post" action="staff_edit_done.php">
+    <div class="page-transition-btns">
+      <input type="hidden" name="code" value="<?= $staff_code; ?>">
+      <input type="hidden" name="name" value="<?php $staff_name; ?>">
+      <input type="hidden" name="pass" value="<?php $staff_pass; ?>">
+      <input class="btn btn--medium btn--green btn--link_green" type="submit" value="スタッフ情報を修正する">
+      <input class="btn btn--small btn--transparent
+    </div> btn--link_transparent" type="button" onclick="history.back()" value="戻る">
+  </form>
+<?php endif; ?>
+
+    </section>
+  </div>
+</main>
 </body>
 </html>
