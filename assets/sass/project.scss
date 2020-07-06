@@ -119,6 +119,8 @@ staff-disp section
     margin-bottom: 20px;
   }
   .staff-data-list {
+    max-width: 600px;
+    margin: 0 auto;
     margin-bottom: 110px;
   }
   form {
@@ -158,6 +160,10 @@ staff-edit-check section
 ---------------------------------------------------------------------*/
 
 .staff-edit-check {
+  .staff-data-list {
+    max-width: 600px;
+    margin: 0 auto;
+  }
   .page-transition-from-edit-check {
     margin-top: 40px;
     text-align: center;

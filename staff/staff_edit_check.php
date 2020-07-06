@@ -62,8 +62,8 @@ if($staff_name === '' || $staff_pass === '' || $staff_pass !== $staff_pass2): ?>
   <form method="post" action="staff_edit_done.php">
     <div class="page-transition-btns">
       <input type="hidden" name="code" value="<?= $staff_code; ?>">
-      <input type="hidden" name="name" value="<?php $staff_name; ?>">
-      <input type="hidden" name="pass" value="<?php $staff_pass; ?>">
+      <input type="hidden" name="name" value="<?= $staff_name; ?>">
+      <input type="hidden" name="pass" value="<?= $staff_pass; ?>">
       <input class="btn btn--medium btn--green btn--link_green" type="submit" value="スタッフ情報を修正する">
       <input class="btn btn--small btn--transparent
     </div> btn--link_transparent" type="button" onclick="history.back()" value="戻る">
