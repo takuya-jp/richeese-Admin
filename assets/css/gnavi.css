@@ -1,7 +1,7 @@
 .gnavi {
   height: 40px;
   padding: 0 16px;
-  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.15); }
+  box-shadow: rgba(0, 0, 0, 0.13) 0px 2px 6px 0px; }
   .gnavi__inner {
     max-width: 1100px;
     height: 100%;

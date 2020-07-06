@@ -1,0 +1,18 @@
+.pagenation {
+  max-width: 300px;
+  margin: 0 auto;
+  padding: 0 16px;
+  display: flex;
+  justify-content: space-between; }
+  .pagenation__left, .pagenation__right {
+    display: inline-block;
+    width: 40px;
+    height: 40px;
+    text-align: center;
+    line-height: 40px;
+    border-radius: 8px;
+    border: 1px solid #ddd;
+    transition: .2s; }
+    .pagenation__left:hover, .pagenation__right:hover {
+      opacity: .8;
+      background-color: #ddd; }
