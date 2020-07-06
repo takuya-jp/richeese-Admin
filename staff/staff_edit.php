@@ -3,34 +3,23 @@ header('X-FRAME-OPTIONS:DENY');
 
 session_start();
 session_regenerate_id(true);
+
+define('TITLE', 'スタッフ情報修正');
+
 if (isset($_SESSION['login']) === false) {
-  print 'ログインされていません。<br>';
-  print '<a href="../staff_login/staff_login.html">ログイン画面へ</a>';
+  header('Location: /richeese-Admin/login/staff_login.php');
   exit();
 } else {
-  print $_SESSION['staff_name'];
-  print 'さんログイン中<br>';
-  print '<br>';
-
+  $login_staff_name = $_SESSION['staff_name'];
 }
-?>
 
-<!DOCTYPE html>
-<html lang="ja">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>RICHEESE -スタッフ情報修正-</title>
-</head>
-<body>
-<?php
 try {
-  require_once __DIR__ . '/../../functions/common.php';
+  require_once __DIR__ . '/../functions/common.php';
 
   $get = sanitize($_GET);
   $staff_code = $get['staffcode'];
 
-  require_once __DIR__ . '/../../functions/dbcon.php';
+  require_once __DIR__ . '/../functions/dbcon.php';
 
   $sql = 'SELECT name FROM mst_staff WHERE code = ?';
   $stmt = $dbh->prepare($sql);
@@ -45,24 +34,47 @@ try {
   print 'ただいま障害により大変ご迷惑をお掛けしております。';
   exit();
 }
+
+
+require_once ($_SERVER['DOCUMENT_ROOT'] . '/richeese-Admin/assets/_inc/head.php');
+require_once ($_SERVER['DOCUMENT_ROOT'] . '/richeese-Admin/assets/_inc/header.php');
+
 ?>
-スタッフ修正<br>
-<br>
-スタッフコード<br>
-<?php print $staff_code; ?>
-<br>
-<br>
-<form method="post" action="staff_edit_check.php">
-  <input type="hidden" name="code" value="<?php print $staff_code; ?>">
-  スタッフ名<br>
-  <input type="text" name="name" style="width:200px" value="<?php print $staff_name; ?>"><br>
-  パスワードを入力してください。<br>
-  <input type="password" name="pass" style="width:100px"><br>
-  パスワードをもう一度入力してください。<br>
-  <input type="password" name="pass2" style="width:100px"><br>
-  <br>
-  <input type="button" onclick="history.back()" value="戻る">
-  <input type="submit" value="OK">
-</form>
+
+<main class="main">
+  <div class="section-container">
+    <section class="staff-edit">
+      <h1 class="level1-heading">スタッフ情報修正</h1>
+      <p class="login-name login-name__border_bottom"><?= $login_staff_name; ?>さん ログイン中</p>
+      <dl class="staff-data-list">
+        <dt class="staff-data-list__title">スタッフコード</dt>
+        <dd class="staff-data-list__data"><?php print $staff_code; ?></dd>
+      </dl>
+      <form method="post" action="staff_edit_check.php">
+
+        <div class="text-box">
+          <label class="text-box__label" for="name">スタッフ名</label>
+          <input id="name" class="text-box__input" type="text" name="name" value="<?php print $staff_name; ?>">
+        </div>
+
+        <div class="text-box">
+          <label  class="text-box__label" for="pass">新しいパスワード</label>
+          <input id="pass" class="text-box__input" type="password" name="pass">
+        </div>
+
+        <div class="text-box">
+          <label  class="text-box__label" for="pass2">新しいパスワードを再入力する</label>
+          <input id="pass2" class="text-box__input" type="password" name="pass2">
+        </div>
+
+        <div class="page-transition-btns">
+          <input type="hidden" name="code" value="<?php print $staff_code; ?>">
+          <input class="btn btn--medium btn--green btn--link_green" type="submit" value="入力内容を確認する">
+          <input class="btn btn--small btn--transparent btn--link_transparent" type="button" onclick="history.back()" value="戻る">
+        </div>
+      </form>
+    </section>
+  </div>
+</main>
 </body>
 </html>

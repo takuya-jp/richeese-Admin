@@ -53,6 +53,31 @@ result section
 
 .result {
   text-align: center;
+  .level1-heading {
+    margin-top: 70px;
+  }
+  .login-name {
+    text-align: left;
+    margin-bottom: 60px;
+  }
+  .result-icon {
+    margin-bottom: 10px;
+  }
+  .result-message {
+    margin-bottom: 80px;
+  }
+  .result-btn {
+    text-align: center;
+  }
+}
+/*---------------------------------------------------------------------
+
+staff-select-error section
+
+---------------------------------------------------------------------*/
+
+.staff-select-error {
+  text-align: center;
   .login-name {
     text-align: left;
     margin-bottom: 60px;
@@ -100,3 +125,31 @@ staff-disp section
     text-align: center;
   }
 }
+
+/*---------------------------------------------------------------------
+
+staff-edit section
+
+---------------------------------------------------------------------*/
+
+.staff-edit {
+  .text-box {
+    margin-bottom: 30px;
+    width: auto;
+    max-width: 400px;
+  }
+  .page-transition-btns {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    .btn {
+      margin-bottom: 16px;
+    }
+  }
+}
+
+/*---------------------------------------------------------------------
+
+staff-edit-check section
+
+---------------------------------------------------------------------*/

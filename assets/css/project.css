@@ -39,6 +39,8 @@ result section
 ---------------------------------------------------------------------*/
 .result {
   text-align: center; }
+  .result .level1-heading {
+    margin-top: 70px; }
   .result .login-name {
     text-align: left;
     margin-bottom: 60px; }
@@ -47,6 +49,23 @@ result section
   .result .result-message {
     margin-bottom: 80px; }
   .result .result-btn {
+    text-align: center; }
+
+/*---------------------------------------------------------------------
+
+staff-select-error section
+
+---------------------------------------------------------------------*/
+.staff-select-error {
+  text-align: center; }
+  .staff-select-error .login-name {
+    text-align: left;
+    margin-bottom: 60px; }
+  .staff-select-error .result-icon {
+    margin-bottom: 10px; }
+  .staff-select-error .result-message {
+    margin-bottom: 80px; }
+  .staff-select-error .result-btn {
     text-align: center; }
 
 /*---------------------------------------------------------------------
@@ -73,3 +92,26 @@ staff-disp section
 
 .staff-disp form {
   text-align: center; }
+
+/*---------------------------------------------------------------------
+
+staff-edit section
+
+---------------------------------------------------------------------*/
+.staff-edit .text-box {
+  margin-bottom: 30px;
+  width: auto;
+  max-width: 400px; }
+
+.staff-edit .page-transition-btns {
+  display: flex;
+  flex-direction: column;
+  align-items: center; }
+  .staff-edit .page-transition-btns .btn {
+    margin-bottom: 16px; }
+
+/*---------------------------------------------------------------------
+
+staff-edit-check section
+
+---------------------------------------------------------------------*/

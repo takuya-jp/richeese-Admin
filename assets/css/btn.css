@@ -18,7 +18,8 @@
   .btn--transparent {
     color: #333;
     background-color: transparent;
-    border: 1px solid #333; }
+    border: none;
+    box-shadow: 0 0 2px gray; }
   .btn--orange {
     color: #fff;
     background-color: #ee9800;
