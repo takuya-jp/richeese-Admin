@@ -1,36 +1,25 @@
 <?php
 session_start();
 session_regenerate_id(true);
+
+define('TITLE', 'スタッフ情報削除-完了画面-');
+
 if (isset($_SESSION['login']) === false) {
-  print 'ログインされていません。<br>';
-  print '<a href="../staff_login/staff_login.html">ログイン画面へ</a>';
+  header('Location: /richeese-Admin/login/staff_login.php');
   exit();
 } else {
-  print $_SESSION['staff_name'];
-  print 'さんログイン中<br>';
-  print '<br>';
-
+  $login_staff_name = $_SESSION['staff_name'];
 }
-?>
 
-<!DOCTYPE html>
-<html lang="ja">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>RICHEESE -スタッフ削除完了-</title>
-</head>
-<body>
-<?php
 try {
   $staff_code = $_POST['code'];
   $csrf = $_POST['csrf'];
   if ($csrf !== $_SESSION['csrfToken']) {
-    print 'セッションエラー';
+    header('Location: /richeese-Admin/login/staff_login.php');
     exit();
   }
 
-  require_once __DIR__ . '/../../functions/dbcon.php';
+  require_once __DIR__ . '/../functions/dbcon.php';
 
   $sql = 'DELETE FROM mst_staff WHERE code = ?';
   $stmt = $dbh->prepare($sql);
@@ -47,9 +36,22 @@ try {
   print 'ただいま障害により大変ご迷惑をお掛けしております。';
   exit();
 }
+
+require_once ($_SERVER['DOCUMENT_ROOT'] . '/richeese-Admin/assets/_inc/head.php');
+require_once ($_SERVER['DOCUMENT_ROOT'] . '/richeese-Admin/assets/_inc/header.php');
+
 ?>
-削除しました。<br>
-<br>
-<a href="staff_list.php">戻る</a>
+
+<main class="main">
+  <div class="section-container">
+    <section class="staff-select-error">
+      <h1 class="level1-heading level1-heading--margin-top_none">スタッフ情報削除</h1>
+      <p class="login-name login-name__border_bottom"><?= $login_staff_name; ?>さん ログイン中</p>
+      <p class="result-icon result-icon--error"><i class="fas fa-check"></i></p>
+      <p class="result-message">スタッフの情報を削除しました。</p>
+      <div class="result-btn"><a class="btn btn--small btn--orange btn--link_orange" href="/richeese-Admin/staff/staff_list.php">スタッフ一覧へ</a></div>
+    </section>
+  </div>
+</main>
 </body>
 </html>
