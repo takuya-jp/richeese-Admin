@@ -68,12 +68,14 @@ require_once ($_SERVER['DOCUMENT_ROOT'] . '/richeese-Admin/assets/_inc/header.ph
           <a href="#" class="pagenation__left pagenation__left--hover"><i class="fas fa-angle-double-left"></i></a>
           <a href="#" class="pagenation__right"><i class="fas fa-angle-double-right"></i></a>
         </div>
-          <p class="select-buttons">
-            <p>選択されたスタッフを</p>
-            <input class="btn btn--exsmall btn--transparent btn--link_transparent" type="submit" name="disp" value="参照">
-            <input class="btn btn--exsmall btn--transparent btn--link_transparent" type="submit" name="edit" value="修正">
-            <input class="btn btn--exsmall btn--red btn--link_red" type="submit" name="delete" value="削除">
-          </p>
+          <div class="select-buttons">
+            <p class="select-buttons__text">選択されたスタッフを</p>
+            <div class="select-buttons__buttons">
+              <input class="btn btn--exsmall btn--transparent btn--link_transparent" type="submit" name="disp" value="参照">
+              <input class="btn btn--exsmall btn--transparent btn--link_transparent" type="submit" name="edit" value="修正">
+              <input class="btn btn--exsmall btn--red btn--link_red" type="submit" name="delete" value="削除">
+            </div>
+          </div>
       </form>
     </section>
   </div>

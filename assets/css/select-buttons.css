@@ -1,0 +1,10 @@
+.select-buttons__text {
+  text-align: center;
+  font-size: 1.6rem;
+  margin-bottom: 16px; }
+
+.select-buttons__buttons {
+  max-width: 300px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between; }
