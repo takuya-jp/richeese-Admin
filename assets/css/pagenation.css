@@ -5,6 +5,7 @@
   display: flex;
   justify-content: space-between; }
   .pagenation__left, .pagenation__right {
+    color: #55595c;
     display: inline-block;
     width: 40px;
     height: 40px;
