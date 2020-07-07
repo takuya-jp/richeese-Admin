@@ -74,7 +74,7 @@ require_once ($_SERVER['DOCUMENT_ROOT'] . '/richeese-Admin/assets/_inc/header.ph
               }
               ?>
             <tr>
-              <td class="staff-table__tbody-item1"><input id="<?= $rec['code']; ?>" type="radio" name="pro-code" value="<?= $rec['code']; ?>"></td>
+              <td class="staff-table__tbody-item1"><input id="<?= $rec['code']; ?>" type="radio" name="procode" value="<?= $rec['code']; ?>"></td>
               <td class="staff-table__tbody-item2"><label class="hoge" for="<?= $rec['code']; ?>"><?= $rec['code']; ?></label></td>
               <td class="staff-table__tbody-item3"><label class="hoge" for="<?= $rec['code']; ?>"><?= $rec['name']; ?></label></td>
             </tr>

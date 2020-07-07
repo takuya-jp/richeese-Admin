@@ -1,42 +1,39 @@
 <?php
-header('X-FRAME-OPTIONS:DENY');
-
 session_start();
 session_regenerate_id(true);
+
+define('TITLE', '商品情報削除-確認画面-');
+
 if (isset($_SESSION['login']) === false) {
-  print 'ログインされていません。<br>';
-  print '<a href="../staff_login/staff_login.html">ログイン画面へ</a>';
+  header('Location: /richeese-Admin/login/staff_login.php');
   exit();
 } else {
-  print $_SESSION['staff_name'];
-  print 'さんログイン中<br>';
-  print '<br>';
+  $login_staff_name = $_SESSION['staff_name'];
 
+  if (!isset($_SESSION['csrfToken'])) {
+    $csrfToken =  bin2hex(random_bytes(32));
+    $_SESSION['csrfToken'] = $csrfToken;
+  }
+  $token = $_SESSION['csrfToken'];
+  
 }
-?>
 
-<!DOCTYPE html>
-<html lang="ja">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>RICHEESE -商品情報削除-</title>
-</head>
-<body>
-<?php
 try {
+  require_once __DIR__ . '/../functions/common.php';
+
+  $get = sanitize($_GET);
   $pro_code = $_GET['procode'];
 
-  require_once __DIR__ . '/../../functions/dbcon.php';
+  require_once __DIR__ . '/../functions/dbcon.php';
 
-
-  $sql = 'SELECT name, gazou FROM mst_product WHERE code = ?';
+  $sql = 'SELECT * FROM mst_product WHERE code = ?';
   $stmt = $dbh->prepare($sql);
   $data[] = $pro_code;
   $stmt->execute($data);
 
   $rec = $stmt->fetch(PDO::FETCH_ASSOC);
   $pro_name = $rec['name'];
+  $pro_price = $rec['price'];
   $pro_gazou_name = $rec['gazou'];
 
   $dbh = null;
@@ -51,24 +48,40 @@ try {
   print 'ただいま障害により大変ご迷惑をお掛けしております。';
   exit();
 }
+
+require_once ($_SERVER['DOCUMENT_ROOT'] . '/richeese-Admin/assets/_inc/head.php');
+require_once ($_SERVER['DOCUMENT_ROOT'] . '/richeese-Admin/assets/_inc/header.php');
+
 ?>
-商品削除<br>
-<br>
-商品コード<br>
-<?php print $pro_code; ?>
-<br>
-商品名<br>
-<?php print $pro_name; ?>
-<br>
-<?php print $dis_gazou; ?>
-<br>
-この商品を削除してよろしいですか？<br>
-<br>
-<form method="post" action="pro_delete_done.php">
-  <input type="hidden" name="code" value="<?php print $pro_code; ?>">
-  <input type="hidden" name="gazou_name" value="<?php print $pro_gazou_name; ?>">
-  <input type="button" onclick="history.back()" value="戻る">
-  <input type="submit" value="OK">
+
+<main class="main">
+  <div class="section-container">
+    <section class="staff-edit-check">
+      <h1 class="level1-heading">スタッフ情報削除</h1>
+      <p class="login-name login-name__border_bottom"><?= $login_staff_name; ?>さん ログイン中</p>
+      <dl class="staff-data-list">
+        <dt class="staff-data-list__title">商品コード</dt>
+        <dd class="staff-data-list__data"><?php print $pro_code; ?></dd>
+        <dt class="staff-data-list__title">商品名</dt>
+        <dd class="staff-data-list__data"><?php print $pro_name; ?></dd>
+        <dt class="staff-data-list__title">商品価格</dt>
+        <dd class="staff-data-list__data">¥ <?php print number_format($pro_price); ?></dd>
+        <dt class="staff-data-list__title">商品画像</dt>
+        <dd class="staff-data-list__data"><?php print $dis_gazou; ?></dd>
+      </dl>
+      <p class="alert-message">この商品を削除してよろしいですか？</p>
+      <form method="post" action="pro_delete_done.php">
+        <div class="page-transition-btns">
+          <input type="hidden" name="code" value="<?= $pro_code; ?>">
+          <input type="hidden" name="csrf" value="<?php print $token; ?>">
+          <input type="hidden" name="gazou_name" value="<?php print $pro_gazou_name; ?>">
+          <input class="btn btn--medium btn--red btn--link_red" type="submit" value="商品情報を削除する">
+          <input class="btn btn--small btn--transparent btn--link_transparent" type="button" onclick="history.back()" value="戻る">
+        </div>
+      </form>
+    </section>
+  </div>
+</main>
 </form>
 </body>
 </html>
