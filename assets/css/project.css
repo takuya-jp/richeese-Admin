@@ -156,3 +156,53 @@ staff-add section
   align-items: center; }
   .staff-add .page-transition-btns .btn {
     margin-bottom: 16px; }
+
+/*---------------------------------------------------------------------
+
+order-download section
+
+---------------------------------------------------------------------*/
+.order-download .login-name {
+  margin-bottom: 30px; }
+
+.order-download .result-message {
+  margin-bottom: 20px; }
+
+.order-download .select-date {
+  font-size: 1.6rem; }
+  .order-download .select-date .select-year {
+    margin-bottom: 16px; }
+    .order-download .select-date .select-year > select {
+      margin-right: 10px;
+      padding: .5em 1em .5em .5em; }
+  .order-download .select-date .select-month {
+    display: inline; }
+    .order-download .select-date .select-month > select {
+      margin-right: 10px;
+      padding: .5em 1em .5em .5em; }
+  .order-download .select-date .select-day {
+    display: inline; }
+    .order-download .select-date .select-day > select {
+      margin-right: 10px;
+      padding: .5em 1em .5em .5em; }
+
+.order-download .l-to-download {
+  margin-top: 67px;
+  text-align: center; }
+
+/*---------------------------------------------------------------------
+
+order-download-done section
+
+---------------------------------------------------------------------*/
+.order-download-done .download-btns {
+  max-width: 350px;
+  margin: 0 auto;
+  padding: 15px 0; }
+  .order-download-done .download-btns .download-btn {
+    margin-bottom: 8px; }
+    .order-download-done .download-btns .download-btn a {
+      width: 100%; }
+  .order-download-done .download-btns .bak-btns {
+    display: flex;
+    justify-content: space-between; }
