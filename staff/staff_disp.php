@@ -13,6 +13,7 @@ if (isset($_SESSION['login']) === false) {
 
 try {
   require_once __DIR__ . '/../functions/common.php';
+  
   $get = sanitize($_GET);
   $staff_code = $get['staffcode'];
   

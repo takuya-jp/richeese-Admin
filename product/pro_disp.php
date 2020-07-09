@@ -1,37 +1,23 @@
 <?php
-header('X-FRAME-OPTIONS:DENY');
-
 session_start();
 session_regenerate_id(true);
+
+define('TITLE', '商品情報参照');
+
 if (isset($_SESSION['login']) === false) {
-  print 'ログインされていません。<br>';
-  print '<a href="../staff_login/staff_login.html">ログイン画面へ</a>';
+  header('Location: /richeese-Admin/login/staff_login.php');
   exit();
 } else {
-  print $_SESSION['staff_name'];
-  print 'さんログイン中<br>';
-  print '<br>';
-
+  $staff_name = $_SESSION['staff_name'];
 }
-?>
 
-<!DOCTYPE html>
-<html lang="ja">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>RICHEESE -商品情報参照-</title>
-</head>
-<body>
-<?php
 try {
-  require_once __DIR__ . '/../../functions/common.php';
+  require_once __DIR__ . '/../functions/common.php';
 
   $get = sanitize($_GET);
   $pro_code = $get['procode'];
 
-  require_once __DIR__ . '/../../functions/dbcon.php';
-
+  require_once __DIR__ . '/../functions/dbcon.php';
 
   $sql = 'SELECT name, price, gazou FROM mst_product WHERE code = ?';
   $stmt = $dbh->prepare($sql);
@@ -54,22 +40,32 @@ try {
   print 'ただいま障害により大変ご迷惑をお掛けしております。';
   exit();
 }
+
+require_once ($_SERVER['DOCUMENT_ROOT'] . '/richeese-Admin/assets/_inc/head.php');
+require_once ($_SERVER['DOCUMENT_ROOT'] . '/richeese-Admin/assets/_inc/header.php');
+
 ?>
-商品情報参照<br>
-<br>
-商品コード<br>
-<?php print $pro_code; ?>
-<br>
-商品名<br>
-<?php print $pro_name; ?>
-<br>
-価格<br>
-<?php print $pro_price; ?>円
-<br>
-<?php print $dis_gazou; ?>
-<br>
-<form>
-  <input type="button" onclick="history.back()" value="戻る">
-</form>
+
+<main class="main">
+  <div class="section-container">
+    <section class="staff-disp">
+      <h1 class="level1-heading">商品情報参照</h1>
+      <p class="login-name login-name__border_bottom"><?= $staff_name; ?>さん ログイン中</p>
+      <dl class="staff-data-list">
+        <dt class="staff-data-list__title">商品コード</dt>
+        <dd class="staff-data-list__data"><?php print $pro_code; ?></dd>
+        <dt class="staff-data-list__title">商品名</dt>
+        <dd class="staff-data-list__data"><?php print $pro_name; ?></dd>
+        <dt class="staff-data-list__title">価格</dt>
+        <dd class="staff-data-list__data">¥ <?php print number_format($pro_price); ?></dd>
+        <dt class="staff-data-list__title">商品画像</dt>
+        <dd class="staff-data-list__data"><?php print $dis_gazou; ?></dd>
+      </dl>
+      <form>
+        <input class="btn btn--small btn--transparent btn--link_transparent" type="button" onclick="history.back()" value="戻る">
+      </form>
+    </section>
+  </div>
+</main>
 </body>
 </html>
