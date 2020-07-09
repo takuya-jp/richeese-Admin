@@ -3,31 +3,20 @@ header('X-FRAME-OPTIONS:DENY');
 
 session_start();
 session_regenerate_id(true);
+
+define('TITLE', '商品情報修正');
+
 if (isset($_SESSION['login']) === false) {
-  print 'ログインされていません。<br>';
-  print '<a href="../staff_login/staff_login.html">ログイン画面へ</a>';
+  header('Location: /richeese-Admin/login/staff_login.php');
   exit();
 } else {
-  print $_SESSION['staff_name'];
-  print 'さんログイン中<br>';
-  print '<br>';
-
+  $login_staff_name = $_SESSION['staff_name'];
 }
-?>
 
-<!DOCTYPE html>
-<html lang="ja">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>RICHEESE -商品修正-</title>
-</head>
-<body>
-<?php
 try {
   $pro_code = $_GET['procode'];
 
-  require_once __DIR__ . '/../../functions/dbcon.php';
+  require_once __DIR__ . '/../functions/dbcon.php';
 
 
   $sql = 'SELECT name, price, gazou FROM mst_product WHERE code = ?';
@@ -52,28 +41,50 @@ try {
   print 'ただいま障害により大変ご迷惑をお掛けしております。';
   exit();
 }
+
+require_once ($_SERVER['DOCUMENT_ROOT'] . '/richeese-Admin/assets/_inc/head.php');
+require_once ($_SERVER['DOCUMENT_ROOT'] . '/richeese-Admin/assets/_inc/header.php');
+
 ?>
-商品修正<br>
-<br>
-商品コード<br>
-<?php print $pro_code; ?>
-<br>
-<br>
-<form method="post" action="pro_edit_check.php" enctype="multipart/form-data">
-  <input type="hidden" name="code" value="<?php print $pro_code; ?>">
-  <input type="hidden" name="gazou_name_old" value="<?php print $pro_gazou_name_old; ?>">
-  商品名<br>
-  <input type="text" name="name" style="width:200px" value="<?php print $pro_name; ?>"><br>
-  価格<br>
-  <input type="text" name="price" style="width:50px" value="<?php print $pro_price; ?>">円<br>
-  <br>
-  <?php print $dis_gazou; ?>
-  <br>
-  画像を選んで下さい。<br>
-  <input type="file" name="gazou" style="width:400px"><br>
-  <br>
-  <input type="button" onclick="history.back()" value="戻る">
-  <input type="submit" value="OK">
-</form>
+
+<main class="main">
+  <div class="section-container">
+    <section class="staff-edit">
+      <h1 class="level1-heading">商品情報修正</h1>
+      <p class="login-name login-name__border_bottom"><?= $login_staff_name; ?>さん ログイン中</p>
+      <form class="staff-edit-form" method="post" action="pro_edit_check.php" enctype="multipart/form-data">
+      <input type="hidden" name="code" value="<?php print $pro_code; ?>">
+      <input type="hidden" name="gazou_name_old" value="<?php print $pro_gazou_name_old; ?>">
+        
+        <dl class="staff-data-list">
+          <dt class="staff-data-list__title">商品コード</dt>
+          <dd class="staff-data-list__data"><?php print $pro_code; ?></dd>
+        </dl>
+
+        <div class="text-box">
+          <label class="text-box__label" for="name">商品名</label>
+          <input id="name" class="text-box__input" type="text" name="name" value="<?php print $pro_name; ?>">
+        </div>
+
+        <div class="text-box">
+          <label class="text-box__label" for="price">価格</label>
+          <input id="price" class="text-box__input" type="text" name="price" value="<?php print $pro_price; ?>">
+        </div>
+
+        <dl class="staff-data-list">
+          <dt class="staff-data-list__title">現在の商品画像</dt>
+          <dd class="staff-data-list__data"><?php print $dis_gazou; ?></dd>
+          <dt class="staff-data-list__title">（変更する場合）商品画像</dt>
+          <dd class="staff-data-list__data"><input type="file" name="gazou" style="width:400px"></dd>
+        </dl>
+
+        <div class="page-transition-btns">
+          <input class="btn btn--medium btn--green btn--link_green" type="submit" value="入力内容を確認する">
+          <input class="btn btn--small btn--transparent btn--link_transparent" type="button" onclick="history.back()" value="戻る">
+        </div>
+      </form>
+    </section>
+  </div>
+</main>
 </body>
 </html>

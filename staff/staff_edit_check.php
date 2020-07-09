@@ -21,14 +21,14 @@ $staff_pass = $post['pass'];
 $staff_pass2 = $post['pass2'];
 
 if ($staff_name === '') {
-  $error[] =  'スタッフ名が入力されていません。<br>';
+  $error[] =  'スタッフ名が入力されていません';
 }
 
 if ($staff_pass === '') {
-  $error[] = 'パスワードが入力されていません。<br>';
+  $error[] = 'パスワードが入力されていません。';
 }
 if ($staff_pass !== $staff_pass2) {
-  $error[] =  'パスワードが一致しません。<br>';
+  $error[] =  'パスワードが一致しません。';
 }
 
 require_once ($_SERVER['DOCUMENT_ROOT'] . '/richeese-Admin/assets/_inc/head.php');
