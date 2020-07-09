@@ -30,20 +30,22 @@ if (preg_match('/\A[0-9]+\z/', $pro_price) == 0) {
   $error[] = '価格をきちんと入力してください。';
 }
 
+$dis_gazou = "";
+var_dump($pro_gazou['size']);
 if ($pro_gazou['size'] > 0) {
-  if ($pro_gazou['size'] > 1000000) {
+  if ($pro_gazou['size'] > 10000000) {
     $error[] = '画像が大きすぎます';
   } else {
     move_uploaded_file($pro_gazou['tmp_name'], '../assets/img/' . $pro_gazou['name']);
-    $dis_gazou = '<img src="../assets/img/'.$pro_gazou['name'].'">';
+    $dis_gazou = '<img src="../assets/img/' . $pro_gazou['name'] . '">';
   }
 }
+var_dump($error);
 
 require_once ($_SERVER['DOCUMENT_ROOT'] . '/richeese-Admin/assets/_inc/head.php');
 require_once ($_SERVER['DOCUMENT_ROOT'] . '/richeese-Admin/assets/_inc/header.php');
 
 ?>
-
 <main class="main">
   <div class="section-container">
     <section class="staff-edit-check">
@@ -62,11 +64,11 @@ if($pro_name === '' || preg_match('/\A[0-9]+\z/', $pro_price) == 0 || $pro_gazou
 <?php else: ?>
   <dl class="staff-data-list">
     <dt class="staff-data-list__title">商品名</dt>
-    <dd class="staff-data-list__data"><?= $pro_name; ?></dd>
+    <dd class="staff-data-list__data"><?php print $pro_name; ?></dd>
     <dt class="staff-data-list__title">価格</dt>
-    <dd class="staff-data-list__data">¥ <?= number_format($pro_price); ?></dd>
+    <dd class="staff-data-list__data"><?php print $pro_price; ?></dd>
     <dt class="staff-data-list__title">商品画像</dt>
-    <dd class="staff-data-list__data"><?= $dis_gazou; ?></dd>
+    <dd class="staff-data-list__data"><?php print $dis_gazou; ?></dd>
   </dl>
   <form method="post" action="pro_edit_done.php">
     <div class="page-transition-btns">
