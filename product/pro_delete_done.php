@@ -5,7 +5,7 @@ session_regenerate_id(true);
 define('TITLE', '商品情報削除-完了画面-');
 
 if (isset($_SESSION['login']) === false) {
-  header('Location: /richeese-Admin/login/staff_login.php');
+  header('Location: /login/staff_login.php');
   exit();
 } else {
   $login_staff_name = $_SESSION['staff_name'];
@@ -16,7 +16,7 @@ try {
   $pro_gazou_name = $_POST['gazou_name'];
   $csrf = $_POST['csrf'];
   if ($csrf !== $_SESSION['csrfToken']) {
-    header('Location: /richeese-Admin/product/pro_list.php');
+    header('Location: /product/pro_list.php');
     exit();
   }
 
@@ -45,8 +45,8 @@ try {
   exit();
 }
 
-require_once ($_SERVER['DOCUMENT_ROOT'] . '/richeese-Admin/assets/_inc/head.php');
-require_once ($_SERVER['DOCUMENT_ROOT'] . '/richeese-Admin/assets/_inc/header.php');
+require_once ($_SERVER['DOCUMENT_ROOT'] . '/assets/_inc/head.php');
+require_once ($_SERVER['DOCUMENT_ROOT'] . '/assets/_inc/header.php');
 
 ?>
 
@@ -57,7 +57,7 @@ require_once ($_SERVER['DOCUMENT_ROOT'] . '/richeese-Admin/assets/_inc/header.ph
       <p class="login-name login-name__border_bottom"><?= $login_staff_name; ?>さん ログイン中</p>
       <p class="result-icon result-icon--primary"><i class="fas fa-check"></i></p>
       <p class="result-message">商品の情報を削除しました。</p>
-      <div class="result-btn"><a class="btn btn--small btn--orange btn--link_orange" href="/richeese-Admin/product/pro_list.php">商品一覧へ</a></div>
+      <div class="result-btn"><a class="btn btn--small btn--orange btn--link_orange" href="/product/pro_list.php">商品一覧へ</a></div>
     </section>
   </div>
 </main>

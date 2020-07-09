@@ -5,7 +5,7 @@ session_regenerate_id(true);
 define('TITLE', 'スタッフ情報削除-完了画面-');
 
 if (isset($_SESSION['login']) === false) {
-  header('Location: /richeese-Admin/login/staff_login.php');
+  header('Location: /login/staff_login.php');
   exit();
 } else {
   $login_staff_name = $_SESSION['staff_name'];
@@ -15,7 +15,7 @@ try {
   $staff_code = $_POST['code'];
   $csrf = $_POST['csrf'];
   if ($csrf !== $_SESSION['csrfToken']) {
-    header('Location: /richeese-Admin/staff/staff_list.php');
+    header('Location: /staff/staff_list.php');
     exit();
   }
 
@@ -37,8 +37,8 @@ try {
   exit();
 }
 
-require_once ($_SERVER['DOCUMENT_ROOT'] . '/richeese-Admin/assets/_inc/head.php');
-require_once ($_SERVER['DOCUMENT_ROOT'] . '/richeese-Admin/assets/_inc/header.php');
+require_once ($_SERVER['DOCUMENT_ROOT'] . '/assets/_inc/head.php');
+require_once ($_SERVER['DOCUMENT_ROOT'] . '/assets/_inc/header.php');
 
 ?>
 
@@ -49,7 +49,7 @@ require_once ($_SERVER['DOCUMENT_ROOT'] . '/richeese-Admin/assets/_inc/header.ph
       <p class="login-name login-name__border_bottom"><?= $login_staff_name; ?>さん ログイン中</p>
       <p class="result-icon result-icon--primary"><i class="fas fa-check"></i></p>
       <p class="result-message">スタッフの情報を削除しました。</p>
-      <div class="result-btn"><a class="btn btn--small btn--orange btn--link_orange" href="/richeese-Admin/staff/staff_list.php">スタッフ一覧へ</a></div>
+      <div class="result-btn"><a class="btn btn--small btn--orange btn--link_orange" href="/staff/staff_list.php">スタッフ一覧へ</a></div>
     </section>
   </div>
 </main>

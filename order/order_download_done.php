@@ -7,7 +7,7 @@ session_regenerate_id(true);
 define('TITLE', '注文情報ダウンロード-注文一覧-');
 
 if (isset($_SESSION['login']) === false) {
-  header('Location: /richeese-Admin/login/staff_login.php');
+  header('Location: /login/staff_login.php');
   exit();
 } else {
   $login_staff_name = $_SESSION['staff_name'];
@@ -99,8 +99,8 @@ try {
   exit();
 }
 
-require_once ($_SERVER['DOCUMENT_ROOT'] . '/richeese-Admin/assets/_inc/head.php');
-require_once ($_SERVER['DOCUMENT_ROOT'] . '/richeese-Admin/assets/_inc/header.php');
+require_once ($_SERVER['DOCUMENT_ROOT'] . '/assets/_inc/head.php');
+require_once ($_SERVER['DOCUMENT_ROOT'] . '/assets/_inc/header.php');
 
 ?>
 <main class="main">

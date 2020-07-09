@@ -5,14 +5,14 @@ session_regenerate_id(true);
 define('TITLE', 'スタッフ選択エラー');
 
 if (isset($_SESSION['login']) === false) {
-  header('Location: /richeese-Admin/login/staff_login.php');
+  header('Location: /login/staff_login.php');
   exit();
 } else {
   $staff_name = $_SESSION['staff_name'];
 }
 
-require_once ($_SERVER['DOCUMENT_ROOT'] . '/richeese-Admin/assets/_inc/head.php');
-require_once ($_SERVER['DOCUMENT_ROOT'] . '/richeese-Admin/assets/_inc/header.php');
+require_once ($_SERVER['DOCUMENT_ROOT'] . '/assets/_inc/head.php');
+require_once ($_SERVER['DOCUMENT_ROOT'] . '/assets/_inc/header.php');
 
 ?>
 <main class="main">
@@ -22,7 +22,7 @@ require_once ($_SERVER['DOCUMENT_ROOT'] . '/richeese-Admin/assets/_inc/header.ph
       <p class="login-name login-name__border_bottom"><?= $staff_name; ?>さん ログイン中</p>
       <p class="result-icon result-icon--error"><i class="fas fa-times"></i></p>
       <p class="result-message">スタッフが選択されていません</p>
-      <div class="result-btn"><a class="btn btn--small btn--transparent btn--link_transparent" href="/richeese-Admin/staff/staff_list.php">戻る</a></div>
+      <div class="result-btn"><a class="btn btn--small btn--transparent btn--link_transparent" href="/staff/staff_list.php">戻る</a></div>
     </section>
   </div>
 </main>
