@@ -1,81 +1,91 @@
 <?php
-header('X-FRAME-OPTIONS:DENY');
-
 session_start();
 session_regenerate_id(true);
+
+define('TITLE', '商品新規登録-確認画面-');
+
 if (isset($_SESSION['login']) === false) {
-  print 'ログインされていません。<br>';
-  print '<a href="../staff_login/staff_login.html">ログイン画面へ</a>';
+  header('Location: /richeese-Admin/login/staff_login.php');
   exit();
 } else {
-  print $_SESSION['staff_name'];
-  print 'さんログイン中<br>';
-  print '<br>';
+  $login_staff_name = $_SESSION['staff_name'];
+
+  if (!isset($_SESSION['csrfToken'])) {
+    $csrfToken =  bin2hex(random_bytes(32));
+    $_SESSION['csrfToken'] = $csrfToken;
+  }
+  $token = $_SESSION['csrfToken'];
 
 }
-?>
 
-<!DOCTYPE html>
-<html lang="ja">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>RICHEESE -商品登録確認-</title>
-</head>
-<body>
-<?php
-  require_once __DIR__ . '/../../functions/common.php';
+require_once __DIR__ . '/../functions/common.php';
 
 $post = sanitize($_POST);
+
 
 $pro_name = $post['name'];
 $pro_price = $post['price'];
 $pro_gazou = $_FILES['gazou'];
 
 if ($pro_name === '') {
-  print '商品名が入力されていません。<br>';
-} else {
-  print '商品名：';
-  print $pro_name;
-  print '<br>';
+  $error[] = '商品名が入力されていません。';
 }
 
 if (preg_match('/\A[0-9]+\z/', $pro_price) == 0) {
-  print '価格をきちんと入力してください。<br>';
-} else {
-  print '価格：';
-  print $pro_price;
-  print '<br>';
-
+  $error[] =  '価格をきちんと入力してください。';
 }
 
 if ($pro_gazou['size'] > 0) {
-  if ($pro_gazou['size'] > 1000000) {
-    print '画像が大きすぎます';
+  if ($pro_gazou['size'] > 10000000) {
+    $error[] = '画像が大きすぎます';
   } else {
     move_uploaded_file($pro_gazou['tmp_name'], '../assets/img/' . $pro_gazou['name']);
-    print '<img src="../assets/img/' . $pro_gazou['name'] . '">';
-    print '<br>';
+    $dis_gazou = '<img src="../assets/img/'.$pro_gazou['name'].'">';
   }
 }
 
-
-if($pro_name === '' || preg_match('/\A[0-9]+\z/', $pro_price) == 0 || $pro_gazou['size'] > 1000000) {
-  print '<form>';
-  print '<input type="button" onclick="history.back()" value="戻る">';
-  print '</form>';
-} else {
-  print '上記の商品を追加します<br>';
-  print '<form method="post" action="pro_add_done.php">';
-  print '<input type="hidden" name="name" value="'.$pro_name.'">';
-  print '<input type="hidden" name="price" value="'.$pro_price.'">';
-  print '<input type="hidden" name="gazou_name" value="'.$pro_gazou['name'].'">';
-  print '<br>';
-  print '<input type="button" onclick="history.back()" value="戻る">';
-  print '<input type="submit" value="OK">';
-  print '</form>';
-}
+require_once ($_SERVER['DOCUMENT_ROOT'] . '/richeese-Admin/assets/_inc/head.php');
+require_once ($_SERVER['DOCUMENT_ROOT'] . '/richeese-Admin/assets/_inc/header.php');
 
 ?>
+<main class="main">
+  <div class="section-container">
+    <section class="staff-edit-check">
+      <h1 class="level1-heading">商品新規登録</h1>
+      <p class="login-name login-name__border_bottom"><?= $login_staff_name; ?>さん ログイン中</p>
+<?php
+if($pro_name === '' || preg_match('/\A[0-9]+\z/', $pro_price) == 0 || $pro_gazou['size'] > 10000000): ?>
+  <?php for ($i = 0; $i < count($error); $i++): ?>
+    <p class="input-error-message"><?= $error[$i]; ?></p>
+  <?php endfor; ?>
+  <form>
+    <div class="page-transition-from-edit-check">
+      <input class="btn btn--small btn--transparent btn--link_transparent" type="button" onclick="history.back()" value="戻る">
+    </div>
+  </form>
+<?php else: ?>
+  <dl class="staff-data-list">
+    <dt class="staff-data-list__title">商品名</dt>
+    <dd class="staff-data-list__data"><?php print $pro_name; ?></dd>
+    <dt class="staff-data-list__title">価格</dt>
+    <dd class="staff-data-list__data">¥ <?= number_format($pro_price); ?></dd>
+    <dt class="staff-data-list__title">商品画像</dt>
+    <dd class="staff-data-list__data"><?php print $dis_gazou; ?></dd>
+  </dl>
+  <form method="post" action="pro_add_done.php">
+    <div class="page-transition-btns">
+      <input type="hidden" name="name" value="<?= $pro_name; ?>">
+      <input type="hidden" name="price" value="<?= $pro_price; ?>">
+      <input type="hidden" name="gazou_name" value="<?= $pro_gazou['name']; ?>">
+      <input type="hidden" name="csrf" value="<?php print $token; ?>">
+      <input class="btn btn--medium btn--green btn--link_green" type="submit" value="商品を新規登録する">
+      <input class="btn btn--small btn--transparent btn--link_transparent" type="button" onclick="history.back()" value="戻る">
+    </div>
+  </form>
+<?php endif; ?>
+    </section>
+  </div>
+</main>
 </body>
 </html>
+
