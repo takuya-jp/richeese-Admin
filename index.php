@@ -5,7 +5,7 @@ session_regenerate_id(true);
 define('TITLE', '管理メニュートップ');
 
 if (isset($_SESSION['login']) === false) {
-  header('Location: /richeese-Admin/login/staff_login.php');
+  header('Location: /login/staff_login.php');
   exit();
 } else {
   $staff_name = $_SESSION['staff_name'];

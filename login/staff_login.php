@@ -1,7 +1,7 @@
 <?php
 define('TITLE', 'ログイン画面');
 
-require_once ($_SERVER['DOCUMENT_ROOT'] . '/richeese-Admin/assets/_inc/head.php');
+require_once ($_SERVER['DOCUMENT_ROOT'] . '/assets/_inc/head.php');
 ?>
 <main class="main">
   <div class="section-container">
