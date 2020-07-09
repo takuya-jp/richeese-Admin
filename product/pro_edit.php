@@ -53,27 +53,27 @@ require_once ($_SERVER['DOCUMENT_ROOT'] . '/richeese-Admin/assets/_inc/header.ph
       <h1 class="level1-heading">商品情報修正</h1>
       <p class="login-name login-name__border_bottom"><?= $login_staff_name; ?>さん ログイン中</p>
       <form class="staff-edit-form" method="post" action="pro_edit_check.php" enctype="multipart/form-data">
-      <input type="hidden" name="code" value="<?php print $pro_code; ?>">
-      <input type="hidden" name="gazou_name_old" value="<?php print $pro_gazou_name_old; ?>">
+      <input type="hidden" name="code" value="<?= $pro_code; ?>">
+      <input type="hidden" name="gazou_name_old" value="<?= $pro_gazou_name_old; ?>">
         
         <dl class="staff-data-list">
           <dt class="staff-data-list__title">商品コード</dt>
-          <dd class="staff-data-list__data"><?php print $pro_code; ?></dd>
+          <dd class="staff-data-list__data"><?= $pro_code; ?></dd>
         </dl>
 
         <div class="text-box">
           <label class="text-box__label" for="name">商品名</label>
-          <input id="name" class="text-box__input" type="text" name="name" value="<?php print $pro_name; ?>">
+          <input id="name" class="text-box__input" type="text" name="name" value="<?= $pro_name; ?>">
         </div>
 
         <div class="text-box">
           <label class="text-box__label" for="price">価格</label>
-          <input id="price" class="text-box__input" type="text" name="price" value="<?php print $pro_price; ?>">
+          <input id="price" class="text-box__input" type="text" name="price" value="<?= $pro_price; ?>">
         </div>
 
         <dl class="staff-data-list">
           <dt class="staff-data-list__title">現在の商品画像</dt>
-          <dd class="staff-data-list__data"><?php print $dis_gazou; ?></dd>
+          <dd class="staff-data-list__data"><?= $dis_gazou; ?></dd>
           <dt class="staff-data-list__title">（変更する場合）商品画像</dt>
           <dd class="staff-data-list__data"><input type="file" name="gazou" style="width:400px"></dd>
         </dl>

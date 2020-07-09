@@ -66,18 +66,18 @@ if($pro_name === '' || preg_match('/\A[0-9]+\z/', $pro_price) == 0 || $pro_gazou
 <?php else: ?>
   <dl class="staff-data-list">
     <dt class="staff-data-list__title">商品名</dt>
-    <dd class="staff-data-list__data"><?php print $pro_name; ?></dd>
+    <dd class="staff-data-list__data"><?= $pro_name; ?></dd>
     <dt class="staff-data-list__title">価格</dt>
     <dd class="staff-data-list__data">¥ <?= number_format($pro_price); ?></dd>
     <dt class="staff-data-list__title">商品画像</dt>
-    <dd class="staff-data-list__data"><?php print $dis_gazou; ?></dd>
+    <dd class="staff-data-list__data"><?= $dis_gazou; ?></dd>
   </dl>
   <form method="post" action="pro_add_done.php">
     <div class="page-transition-btns">
       <input type="hidden" name="name" value="<?= $pro_name; ?>">
       <input type="hidden" name="price" value="<?= $pro_price; ?>">
       <input type="hidden" name="gazou_name" value="<?= $pro_gazou['name']; ?>">
-      <input type="hidden" name="csrf" value="<?php print $token; ?>">
+      <input type="hidden" name="csrf" value="<?= $token; ?>">
       <input class="btn btn--medium btn--green btn--link_green" type="submit" value="商品を新規登録する">
       <input class="btn btn--small btn--transparent btn--link_transparent" type="button" onclick="history.back()" value="戻る">
     </div>

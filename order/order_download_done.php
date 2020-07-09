@@ -109,7 +109,7 @@ require_once ($_SERVER['DOCUMENT_ROOT'] . '/richeese-Admin/assets/_inc/header.ph
       <h1 class="level1-heading">注文情報ダウンロード</h1>
       <p class="login-name"><?= $login_staff_name; ?>さん ログイン中</p>
       <div class="download-btns">
-        <div class="download-btn"><a class="btn btn--large btn--green btn--link_green" href="chumon<?php print '-'.$year.'-'.$month.'-'.$day;?>.csv">注文データのダウンロード</a></div>
+        <div class="download-btn"><a class="btn btn--large btn--green btn--link_green" href="chumon<?= '-'.$year.'-'.$month.'-'.$day;?>.csv">注文データのダウンロード</a></div>
         <div class="bak-btns">
           <a class="btn btn--exsmall btn--transparent btn--link_transparent" href="order_download.php">戻る</a>
           <a class="btn  btn--medium btn--transparent btn--link_transparent" href="../staff_login/staff_top.php">管理メニュートップ</a>

@@ -53,13 +53,13 @@ require_once ($_SERVER['DOCUMENT_ROOT'] . '/richeese-Admin/assets/_inc/header.ph
       <p class="login-name login-name__border_bottom"><?= $staff_name; ?>さん ログイン中</p>
       <dl class="staff-data-list">
         <dt class="staff-data-list__title">商品コード</dt>
-        <dd class="staff-data-list__data"><?php print $pro_code; ?></dd>
+        <dd class="staff-data-list__data"><?= $pro_code; ?></dd>
         <dt class="staff-data-list__title">商品名</dt>
-        <dd class="staff-data-list__data"><?php print $pro_name; ?></dd>
+        <dd class="staff-data-list__data"><?= $pro_name; ?></dd>
         <dt class="staff-data-list__title">価格</dt>
-        <dd class="staff-data-list__data">¥ <?php print number_format($pro_price); ?></dd>
+        <dd class="staff-data-list__data">¥ <?= number_format($pro_price); ?></dd>
         <dt class="staff-data-list__title">商品画像</dt>
-        <dd class="staff-data-list__data"><?php print $dis_gazou; ?></dd>
+        <dd class="staff-data-list__data"><?= $dis_gazou; ?></dd>
       </dl>
       <form>
         <input class="btn btn--small btn--transparent btn--link_transparent" type="button" onclick="history.back()" value="戻る">

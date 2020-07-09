@@ -61,7 +61,7 @@ if($staff_name === '' || $staff_pass === '' || $staff_pass !== $staff_pass2): ?>
 <?php $staff_pass = md5($staff_pass); ?>
   <dl class="staff-data-list">
     <dt class="staff-data-list__title">スタッフ名</dt>
-    <dd class="staff-data-list__data"><?php print $staff_name; ?></dd>
+    <dd class="staff-data-list__data"><?= $staff_name; ?></dd>
     <dt class="staff-data-list__title">パスワード</dt>
     <dd class="staff-data-list__data">＊＊＊＊＊＊＊＊＊＊＊</dd>
   </dl>
@@ -69,7 +69,7 @@ if($staff_name === '' || $staff_pass === '' || $staff_pass !== $staff_pass2): ?>
     <div class="page-transition-btns">
       <input type="hidden" name="name" value="<?= $staff_name; ?>">
       <input type="hidden" name="pass" value="<?= $staff_pass; ?>">
-      <input type="hidden" name="csrf" value="<?php print $token; ?>">
+      <input type="hidden" name="csrf" value="<?= $token; ?>">
       <input class="btn btn--medium btn--green btn--link_green" type="submit" value="スタッフを新規登録する">
       <input class="btn btn--small btn--transparent btn--link_transparent" type="button" onclick="history.back()" value="戻る">
     </div>

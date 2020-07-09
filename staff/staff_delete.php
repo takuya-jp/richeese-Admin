@@ -51,15 +51,15 @@ require_once ($_SERVER['DOCUMENT_ROOT'] . '/richeese-Admin/assets/_inc/header.ph
       <p class="login-name login-name__border_bottom"><?= $login_staff_name; ?>さん ログイン中</p>
       <dl class="staff-data-list">
         <dt class="staff-data-list__title">スタッフコード</dt>
-        <dd class="staff-data-list__data"><?php print $staff_code; ?></dd>
+        <dd class="staff-data-list__data"><?= $staff_code; ?></dd>
         <dt class="staff-data-list__title">スタッフ名</dt>
-        <dd class="staff-data-list__data"><?php print $staff_name; ?></dd>
+        <dd class="staff-data-list__data"><?= $staff_name; ?></dd>
       </dl>
       <p class="alert-message">このスタッフを削除してよろしいですか？</p>
       <form method="post" action="staff_delete_done.php">
         <div class="page-transition-btns">
           <input type="hidden" name="code" value="<?= $staff_code; ?>">
-          <input type="hidden" name="csrf" value="<?php print $token; ?>">
+          <input type="hidden" name="csrf" value="<?= $token; ?>">
           <input class="btn btn--medium btn--red btn--link_red" type="submit" value="スタッフ情報を削除する">
           <input class="btn btn--small btn--transparent btn--link_transparent" type="button" onclick="history.back()" value="戻る">
         </div>

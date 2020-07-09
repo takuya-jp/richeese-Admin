@@ -62,11 +62,11 @@ if($pro_name === '' || preg_match('/\A[0-9]+\z/', $pro_price) == 0 || $pro_gazou
 <?php else: ?>
   <dl class="staff-data-list">
     <dt class="staff-data-list__title">商品名</dt>
-    <dd class="staff-data-list__data"><?php print $pro_name; ?></dd>
+    <dd class="staff-data-list__data"><?= $pro_name; ?></dd>
     <dt class="staff-data-list__title">価格</dt>
     <dd class="staff-data-list__data">¥ <?= number_format($pro_price); ?></dd>
     <dt class="staff-data-list__title">商品画像</dt>
-    <dd class="staff-data-list__data"><?php print $dis_gazou; ?></dd>
+    <dd class="staff-data-list__data"><?= $dis_gazou; ?></dd>
   </dl>
   <form method="post" action="pro_edit_done.php">
     <div class="page-transition-btns">

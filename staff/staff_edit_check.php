@@ -55,7 +55,7 @@ if($staff_name === '' || $staff_pass === '' || $staff_pass !== $staff_pass2): ?>
 <?php $staff_pass = md5($staff_pass); ?>
   <dl class="staff-data-list">
     <dt class="staff-data-list__title">スタッフ名</dt>
-    <dd class="staff-data-list__data"><?php print $staff_name; ?></dd>
+    <dd class="staff-data-list__data"><?= $staff_name; ?></dd>
     <dt class="staff-data-list__title">パスワード</dt>
     <dd class="staff-data-list__data">＊＊＊＊＊＊＊＊＊＊＊</dd>
   </dl>

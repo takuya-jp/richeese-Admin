@@ -49,12 +49,12 @@ require_once ($_SERVER['DOCUMENT_ROOT'] . '/richeese-Admin/assets/_inc/header.ph
       <form class="staff-edit-form" method="post" action="staff_edit_check.php">
         <dl class="staff-data-list">
           <dt class="staff-data-list__title">スタッフコード</dt>
-          <dd class="staff-data-list__data"><?php print $staff_code; ?></dd>
+          <dd class="staff-data-list__data"><?= $staff_code; ?></dd>
         </dl>
 
         <div class="text-box">
           <label class="text-box__label" for="name">スタッフ名</label>
-          <input id="name" class="text-box__input" type="text" name="name" value="<?php print $staff_name; ?>">
+          <input id="name" class="text-box__input" type="text" name="name" value="<?= $staff_name; ?>">
         </div>
 
         <div class="text-box">
@@ -68,7 +68,7 @@ require_once ($_SERVER['DOCUMENT_ROOT'] . '/richeese-Admin/assets/_inc/header.ph
         </div>
 
         <div class="page-transition-btns">
-          <input type="hidden" name="code" value="<?php print $staff_code; ?>">
+          <input type="hidden" name="code" value="<?= $staff_code; ?>">
           <input class="btn btn--medium btn--green btn--link_green" type="submit" value="入力内容を確認する">
           <input class="btn btn--small btn--transparent btn--link_transparent" type="button" onclick="history.back()" value="戻る">
         </div>

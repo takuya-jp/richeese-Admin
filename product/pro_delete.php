@@ -61,20 +61,20 @@ require_once ($_SERVER['DOCUMENT_ROOT'] . '/richeese-Admin/assets/_inc/header.ph
       <p class="login-name login-name__border_bottom"><?= $login_staff_name; ?>さん ログイン中</p>
       <dl class="staff-data-list">
         <dt class="staff-data-list__title">商品コード</dt>
-        <dd class="staff-data-list__data"><?php print $pro_code; ?></dd>
+        <dd class="staff-data-list__data"><?= $pro_code; ?></dd>
         <dt class="staff-data-list__title">商品名</dt>
-        <dd class="staff-data-list__data"><?php print $pro_name; ?></dd>
+        <dd class="staff-data-list__data"><?= $pro_name; ?></dd>
         <dt class="staff-data-list__title">商品価格</dt>
-        <dd class="staff-data-list__data">¥ <?php print number_format($pro_price); ?></dd>
+        <dd class="staff-data-list__data">¥ <?= number_format($pro_price); ?></dd>
         <dt class="staff-data-list__title">商品画像</dt>
-        <dd class="staff-data-list__data"><?php print $dis_gazou; ?></dd>
+        <dd class="staff-data-list__data"><?= $dis_gazou; ?></dd>
       </dl>
       <p class="alert-message">この商品を削除してよろしいですか？</p>
       <form method="post" action="pro_delete_done.php">
         <div class="page-transition-btns">
           <input type="hidden" name="code" value="<?= $pro_code; ?>">
-          <input type="hidden" name="csrf" value="<?php print $token; ?>">
-          <input type="hidden" name="gazou_name" value="<?php print $pro_gazou_name; ?>">
+          <input type="hidden" name="csrf" value="<?= $token; ?>">
+          <input type="hidden" name="gazou_name" value="<?= $pro_gazou_name; ?>">
           <input class="btn btn--medium btn--red btn--link_red" type="submit" value="商品情報を削除する">
           <input class="btn btn--small btn--transparent btn--link_transparent" type="button" onclick="history.back()" value="戻る">
         </div>
