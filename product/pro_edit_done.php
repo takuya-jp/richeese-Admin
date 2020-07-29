@@ -60,7 +60,7 @@ require_once ($_SERVER['DOCUMENT_ROOT'] . '/richeese-Admin/assets/_inc/header.ph
       <p class="login-name login-name__border_bottom"><?= $login_staff_name; ?>さん ログイン中</p>
       <p class="result-icon result-icon--primary"><i class="fas fa-check"></i></p>
       <p class="result-message">商品の情報を修正しました。</p>
-      <div class="result-btn"><a class="btn btn--small btn--orange btn--link_orange" href="/product/pro_list.php">商品一覧へ</a></div>
+      <div class="result-btn"><a class="btn btn--small btn--orange btn--link_orange" href="/richeese-Admin/product/pro_list.php">商品一覧へ</a></div>
     </section>
   </div>
 </main>
