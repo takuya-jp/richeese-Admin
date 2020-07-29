@@ -49,7 +49,7 @@ require_once ($_SERVER['DOCUMENT_ROOT'] . '/richeese-Admin/assets/_inc/header.ph
       <p class="login-name login-name__border_bottom"><?= $login_staff_name; ?>さん ログイン中</p>
       <p class="result-icon result-icon--primary"><i class="fas fa-check"></i></p>
       <p class="result-message">スタッフの情報を削除しました。</p>
-      <div class="result-btn"><a class="btn btn--small btn--orange btn--link_orange" href="/staff/staff_list.php">スタッフ一覧へ</a></div>
+      <div class="result-btn"><a class="btn btn--small btn--orange btn--link_orange" href="/richeese-Admin/staff/staff_list.php">スタッフ一覧へ</a></div>
     </section>
   </div>
 </main>
