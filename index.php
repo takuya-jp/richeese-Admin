@@ -5,14 +5,14 @@ session_regenerate_id(true);
 define('TITLE', '管理メニュートップ');
 
 if (isset($_SESSION['login']) === false) {
-  header('Location: /login/staff_login.php');
+  header('Location: /richeese-Admin/login/staff_login.php');
   exit();
 } else {
   $staff_name = $_SESSION['staff_name'];
 }
 
-require_once ($_SERVER['DOCUMENT_ROOT'] . '/assets/_inc/head.php');
-require_once ($_SERVER['DOCUMENT_ROOT'] . '/assets/_inc/header.php');
+require_once ($_SERVER['DOCUMENT_ROOT'] . '/richeese-Admin/assets/_inc/head.php');
+require_once ($_SERVER['DOCUMENT_ROOT'] . '/richeese-Admin/assets/_inc/header.php');
 ?>
 <main class="main">
   <div class="section-container">
@@ -21,10 +21,10 @@ require_once ($_SERVER['DOCUMENT_ROOT'] . '/assets/_inc/header.php');
       <p class="login-name"><?= $staff_name; ?>さん ログイン中</p>
       <ul class="cards cards--col2">
         <li class="cards__item">
-          <a class="card__link" href="/staff/staff_list.php">
+          <a class="card__link" href="/richeese-Admin/staff/staff_list.php">
             <article class="card">
               <figure class="card__imag-wrapper">
-                <img class="card__img" src="/assets/img/man-1959859_640.jpg" alt="画像の説明">
+                <img class="card__img" src="/richeese-Admin/assets/img/man-1959859_640.jpg" alt="画像の説明">
               </figure>
               <div class="card__body">
                 <h3 class="card__title">スタッフ管理</h3>
@@ -34,10 +34,10 @@ require_once ($_SERVER['DOCUMENT_ROOT'] . '/assets/_inc/header.php');
           </a>
         </li>
         <li class="cards__item">
-          <a class="card__link" href="/product/pro_list.php">
+          <a class="card__link" href="/richeese-Admin/product/pro_list.php">
             <article class="card">
               <figure class="card__imag-wrapper">
-                <img class="card__img" src="/assets/img/cheese-tray-1433504_640.jpg" alt="画像の説明">
+                <img class="card__img" src="/richeese-Admin/assets/img/cheese-tray-1433504_640.jpg" alt="画像の説明">
               </figure>
               <div class="card__body">
                 <h3 class="card__title">商品管理</h3>
@@ -47,10 +47,10 @@ require_once ($_SERVER['DOCUMENT_ROOT'] . '/assets/_inc/header.php');
           </a>
         </li>
         <li class="cards__item">
-          <a class="card__link" href="/order/order_download.php">
+          <a class="card__link" href="/richeese-Admin/order/order_download.php">
             <article class="card">
               <figure class="card__imag-wrapper">
-                <img class="card__img" src="/assets/img/upload-2935442_640.png" alt="画像の説明">
+                <img class="card__img" src="/richeese-Admin/assets/img/upload-2935442_640.png" alt="画像の説明">
               </figure>
               <div class="card__body">
                 <h3 class="card__title">注文情報ダウンロード</h3>
@@ -60,10 +60,10 @@ require_once ($_SERVER['DOCUMENT_ROOT'] . '/assets/_inc/header.php');
           </a>
         </li>
         <li class="cards__item">
-          <a class="card__link" href="/login/staff_logout.php">
+          <a class="card__link" href="/richeese-Admin/login/staff_logout.php">
             <article class="card">
               <figure class="card__imag-wrapper">
-                <img class="card__img" src="/assets/img/morning-819362_640.jpg" alt="画像の説明">
+                <img class="card__img" src="/richeese-Admin/assets/img/morning-819362_640.jpg" alt="画像の説明">
               </figure>
               <div class="card__body">
                 <h3 class="card__title">ログアウト</h3>

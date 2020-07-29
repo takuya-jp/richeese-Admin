@@ -3,7 +3,7 @@
 define('TITLE', 'ログインエラー');
 
 try {
-  require_once __DIR__ . '/../functions/common.php';
+  require_once ($_SERVER['DOCUMENT_ROOT'] . '/richeese-Admin/functions/common.php');
 
   $post = sanitize($_POST);
 
@@ -12,7 +12,7 @@ try {
 
   $staff_pass = md5($staff_pass);
 
-  require_once __DIR__ . '/../functions/dbcon.php';
+  require_once ($_SERVER['DOCUMENT_ROOT'] . '/richeese-Admin/functions/dbcon.php');
 
   $sql = 'SELECT name FROM mst_staff WHERE code = ? AND password = ?';
   $stmt = $dbh->prepare($sql);
@@ -33,7 +33,7 @@ try {
     $_SESSION['login'] = 1;
     $_SESSION['staff_code'] = $staff_code;
     $_SESSION['staff_name'] = $rec['name'];
-    header('Location: /index.php');
+    header('Location: /richeese-Admin/index.php');
     exit();
   }
 
@@ -43,7 +43,7 @@ try {
 }
 
 
-require_once ($_SERVER['DOCUMENT_ROOT'] . '/assets/_inc/head.php');
+require_once ($_SERVER['DOCUMENT_ROOT'] . '/richeese-Admin/assets/_inc/head.php');
 ?>
 <main class="main">
   <div class="section-container">
@@ -51,7 +51,7 @@ require_once ($_SERVER['DOCUMENT_ROOT'] . '/assets/_inc/head.php');
       <h1 class="level1-heading">ログインエラー</h1>
       <p class="result-icon result-icon--error"><i class="fas fa-times"></i></p>
       <p class="result-message"><?= $error; ?></p>
-      <div class="result-btn"><a class="btn btn--medium btn--orange btn--link_orange" href="/login/staff_login.php">ログイン画面へ</a></div>
+      <div class="result-btn"><a class="btn btn--medium btn--orange btn--link_orange" href="/richeese-Admin/login/staff_login.php">ログイン画面へ</a></div>
     </section>
   </div>
 </main>
