@@ -5,13 +5,14 @@ session_regenerate_id(true);
 define('TITLE', 'スタッフ情報修正-確認画面-');
 
 if (isset($_SESSION['login']) === false) {
-  header('Location: /login/staff_login.php');
+  header('Location: /richeese-Admin/login/staff_login.php');
   exit();
 } else {
   $login_staff_name = $_SESSION['staff_name'];
 }
 
-require_once __DIR__ . '/../functions/common.php';
+  require_once ($_SERVER['DOCUMENT_ROOT'] . '/richeese-Admin/functions/common.php');
+require_once ($_SERVER['DOCUMENT_ROOT'] . '/richeese-Admin/assets/_inc/header.php');
 
 $post = sanitize($_POST);
 
@@ -31,8 +32,8 @@ if ($staff_pass !== $staff_pass2) {
   $error[] =  'パスワードが一致しません。';
 }
 
-require_once ($_SERVER['DOCUMENT_ROOT'] . '/assets/_inc/head.php');
-require_once ($_SERVER['DOCUMENT_ROOT'] . '/assets/_inc/header.php');
+require_once ($_SERVER['DOCUMENT_ROOT'] . '/richeese-Admin/assets/_inc/head.php');
+require_once ($_SERVER['DOCUMENT_ROOT'] . '/richeese-Admin/assets/_inc/header.php');
 
 ?>
 

@@ -2,7 +2,7 @@
 session_start();
 session_regenerate_id(true);
 if (isset($_SESSION['login']) === false) {
-  header('Location: /login/staff_login.php');
+  header('Location: /richeese-Admin/login/staff_login.php');
   exit();
 }
 

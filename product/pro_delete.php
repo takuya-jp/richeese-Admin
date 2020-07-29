@@ -5,7 +5,7 @@ session_regenerate_id(true);
 define('TITLE', '商品情報削除-確認画面-');
 
 if (isset($_SESSION['login']) === false) {
-  header('Location: /login/staff_login.php');
+  header('Location: /richeese-Admin/login/staff_login.php');
   exit();
 } else {
   $login_staff_name = $_SESSION['staff_name'];
@@ -19,12 +19,13 @@ if (isset($_SESSION['login']) === false) {
 }
 
 try {
-  require_once __DIR__ . '/../functions/common.php';
+    require_once ($_SERVER['DOCUMENT_ROOT'] . '/richeese-Admin/functions/common.php');
+require_once ($_SERVER['DOCUMENT_ROOT'] . '/richeese-Admin/assets/_inc/header.php');
 
   $get = sanitize($_GET);
   $pro_code = $_GET['procode'];
 
-  require_once __DIR__ . '/../functions/dbcon.php';
+  require_once ($_SERVER['DOCUMENT_ROOT'] . '/richeese-Admin/functions/dbcon.php');
 
   $sql = 'SELECT * FROM mst_product WHERE code = ?';
   $stmt = $dbh->prepare($sql);
@@ -49,8 +50,8 @@ try {
   exit();
 }
 
-require_once ($_SERVER['DOCUMENT_ROOT'] . '/assets/_inc/head.php');
-require_once ($_SERVER['DOCUMENT_ROOT'] . '/assets/_inc/header.php');
+require_once ($_SERVER['DOCUMENT_ROOT'] . '/richeese-Admin/assets/_inc/head.php');
+require_once ($_SERVER['DOCUMENT_ROOT'] . '/richeese-Admin/assets/_inc/header.php');
 
 ?>
 

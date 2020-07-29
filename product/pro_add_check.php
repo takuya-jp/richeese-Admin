@@ -5,7 +5,7 @@ session_regenerate_id(true);
 define('TITLE', '商品新規登録-確認画面-');
 
 if (isset($_SESSION['login']) === false) {
-  header('Location: /login/staff_login.php');
+  header('Location: /richeese-Admin/login/staff_login.php');
   exit();
 } else {
   $login_staff_name = $_SESSION['staff_name'];
@@ -18,7 +18,8 @@ if (isset($_SESSION['login']) === false) {
 
 }
 
-require_once __DIR__ . '/../functions/common.php';
+  require_once ($_SERVER['DOCUMENT_ROOT'] . '/richeese-Admin/functions/common.php');
+require_once ($_SERVER['DOCUMENT_ROOT'] . '/richeese-Admin/assets/_inc/header.php');
 
 $post = sanitize($_POST);
 
@@ -44,8 +45,8 @@ if ($pro_gazou['size'] > 0) {
   }
 }
 
-require_once ($_SERVER['DOCUMENT_ROOT'] . '/assets/_inc/head.php');
-require_once ($_SERVER['DOCUMENT_ROOT'] . '/assets/_inc/header.php');
+require_once ($_SERVER['DOCUMENT_ROOT'] . '/richeese-Admin/assets/_inc/head.php');
+require_once ($_SERVER['DOCUMENT_ROOT'] . '/richeese-Admin/assets/_inc/header.php');
 
 ?>
 <main class="main">
