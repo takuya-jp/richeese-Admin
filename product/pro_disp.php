@@ -13,7 +13,6 @@ if (isset($_SESSION['login']) === false) {
 
 try {
     require_once ($_SERVER['DOCUMENT_ROOT'] . '/richeese-Admin/functions/common.php');
-require_once ($_SERVER['DOCUMENT_ROOT'] . '/richeese-Admin/assets/_inc/header.php');
 
   $get = sanitize($_GET);
   $pro_code = $get['procode'];

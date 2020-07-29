@@ -14,7 +14,6 @@ if (isset($_SESSION['login']) === false) {
 }
 
   require_once ($_SERVER['DOCUMENT_ROOT'] . '/richeese-Admin/functions/common.php');
-require_once ($_SERVER['DOCUMENT_ROOT'] . '/richeese-Admin/assets/_inc/header.php');
 
 try {
   require_once ($_SERVER['DOCUMENT_ROOT'] . '/richeese-Admin/functions/dbcon.php');

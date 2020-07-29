@@ -18,8 +18,7 @@ try {
     exit();
   }
 
-    require_once ($_SERVER['DOCUMENT_ROOT'] . '/richeese-Admin/functions/common.php');
-require_once ($_SERVER['DOCUMENT_ROOT'] . '/richeese-Admin/assets/_inc/header.php');
+  require_once ($_SERVER['DOCUMENT_ROOT'] . '/richeese-Admin/functions/common.php');
 
   $post = sanitize($_POST);
 

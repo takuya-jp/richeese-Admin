@@ -12,8 +12,7 @@ if (isset($_SESSION['login']) === false) {
 }
 
 try {
-    require_once ($_SERVER['DOCUMENT_ROOT'] . '/richeese-Admin/functions/common.php');
-require_once ($_SERVER['DOCUMENT_ROOT'] . '/richeese-Admin/assets/_inc/header.php');
+  require_once ($_SERVER['DOCUMENT_ROOT'] . '/richeese-Admin/functions/common.php');
 
 $post = sanitize($_POST);
 
@@ -21,7 +20,7 @@ $staff_code = $post['code'];
 $staff_name = $post['name'];
 $staff_pass = $post['pass'];
 
-require_once __DIR__ . '/../functions/dbcon.php';
+require_once ($_SERVER['DOCUMENT_ROOT'] . '/richeese-Admin/functions/dbcon.php');
 
 $sql = 'UPDATE mst_staff SET name = :name, password = :password WHERE code = :code';
 $stmt = $dbh->prepare($sql);
